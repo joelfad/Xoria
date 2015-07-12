@@ -33,8 +33,7 @@ Usage Agreement:
 #include <libtcod/libtcod.hpp>
 #include "tile.h"
 
-namespace TileSet
-{
+namespace TileSet {
     const Tile GRASS{"Grass", "green vegetation", '.', TCODColor::darkestChartreuse, TCODColor::black};
     const Tile WALL{"Wall", "rock wall", '#', TCODColor::lightPink, TCODColor::black};
 }

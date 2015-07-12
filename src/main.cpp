@@ -3,7 +3,7 @@ Project: Xoria
 File: main.cpp
 Author: Joel McFadden
 Created: June 19, 2015
-Last Modified: June 23, 2015
+Last Modified: July 12, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -27,22 +27,21 @@ Usage Agreement:
     along with Xoria.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include<libtcod/libtcod.hpp>
-#include "engine.h"
-#include <stdlib.h>
+#include <libtcod/libtcod.hpp>
+#include "game.h"
 
-Engine engine;
+Game game;
 
 int main (int argc, char** argv)
 {
     // main game loop
-    while(!TCODConsole::root->isWindowClosed() && engine.is_running()) {
+    while(!TCODConsole::root->isWindowClosed() && game.isRunning()) {
 
         // render console
-        engine.render();
+        game.render();
 
         // get and process input
-        engine.process_next_event();
+        game.processNextEvent();
     }
 
     return 0;

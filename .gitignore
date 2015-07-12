@@ -1,3 +1,4 @@
 /debug
 /release
+/untracked
 *.pro.user

@@ -3,7 +3,7 @@ Project: Xoria
 File: map.h
 Author: Joel McFadden
 Created: June 19, 2015
-Last Modified: June 23, 2015
+Last Modified: July 12, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -34,17 +34,16 @@ Usage Agreement:
 #include <vector>
 
 
-class Map
-{
+class Map {
 public:
-    Map(int _width, int _height);
+    Map(int width, int height);
 
     void render();
 
 private:
-    int width;
-    int height;
-    std::vector<const Tile*> tiles;
+    int width_;
+    int height_;
+    std::vector<const Tile*> tiles_;
 };
 
 #endif // MAP_H

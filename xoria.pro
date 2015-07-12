@@ -12,12 +12,12 @@ LIBS += -ltcod -ltcodxx
 
 SOURCES += \
     src/main.cpp \
-    src/engine.cpp \
     src/tile.cpp \
-    src/map.cpp
+    src/map.cpp \
+    src/game.cpp \
 
 HEADERS += \
-    src/engine.h \
     src/tile.h \
     src/constants.h \
-    src/map.h
+    src/map.h \
+    src/game.h

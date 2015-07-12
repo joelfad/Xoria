@@ -31,5 +31,5 @@ Usage Agreement:
 
 void Tile::render(int x, int y) const
 {
-    TCODConsole::root->putCharEx(x, y, glyph, fore, back);
+    TCODConsole::root->putCharEx(x, y, glyph_, fore_, back_);
 }

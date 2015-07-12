@@ -1,9 +1,9 @@
 /*
 Project: Xoria
-File: engine.h
+File: game.h
 Author: Joel McFadden
 Created: June 19, 2015
-Last Modified: June 23, 2015
+Last Modified: July 12, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -27,32 +27,30 @@ Usage Agreement:
     along with Xoria.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef ENGINE_H
-#define ENGINE_H
+#ifndef GAME_H
+#define GAME_H
 
 #include <libtcod/libtcod.hpp>
 #include "map.h"
 
-class Engine
-{
+class Game {
 public:
-    Engine();
+    Game();
     /* initializes the root console window */
 
     void render();
     /* updates the root console */
 
-    void process_next_event();
+    void processNextEvent();
     /* wait for user input and execute corresponding command */
 
-    bool is_running() { return running; }
-
+    bool isRunning() { return running_; }
 
 private:
-    int player_x;
-    int player_y;
-    bool running;
-    Map map;
+    int playerX_;
+    int playerY_;
+    bool running_;
+    Map map_;
 };
 
-#endif // ENGINE_H
+#endif // GAME_H
