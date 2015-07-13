@@ -1,8 +1,8 @@
 /*
 Project: Xoria
-File: constants.h
+File: world.h
 Author: Joel McFadden
-Created: June 19, 2015
+Created: July 12, 2015
 Last Modified: July 12, 2015
 
 Description:
@@ -27,21 +27,29 @@ Usage Agreement:
     along with Xoria.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef CONSTANTS
-#define CONSTANTS
+#ifndef WORLD_H
+#define WORLD_H
 
-#include <libtcod/libtcod.hpp>
-#include "tile.h"
+#include <vector>
+#include <memory>
+#include "map.h"
 
-namespace Settings {
-    const int consoleWidth = 80;
-    const int consoleHeight = 48;
-}
+class World
+{
+public:
+    World(const int numMaps);
+    /* generate default maps */
 
-namespace TileSet {
-    const Tile GRASS{"Grass", "green vegetation", '.', TCODColor::darkestChartreuse, TCODColor::black};
-    const Tile WALL{"Wall", "rock wall", '#', TCODColor::lightPink, TCODColor::black};
-}
+    static void makeCave(Map& map);
+    /* turn a default map into a cave map */
 
-#endif // CONSTANTS
+    std::weak_ptr<Map> currentMap() { return currentMap_; }
 
+    using MapVector = std::vector<std::shared_ptr<Map>>;
+
+private:
+    MapVector maps_;
+    std::weak_ptr<Map> currentMap_;
+};
+
+#endif // WORLD_H

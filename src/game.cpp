@@ -29,13 +29,13 @@ Usage Agreement:
 
 #include "game.h"
 
-Game::Game() : playerX_{2}, playerY_{0}, running_{true}, map_{80, 48}
+Game::Game() : playerX_{2}, playerY_{0}, running_{true}, world_{1}
 {
     // specify the font file, set to antialiased greyscale
     TCODConsole::setCustomFont("fonts/terminal16x16_gs_ro.png", TCOD_FONT_LAYOUT_ASCII_INROW | TCOD_FONT_TYPE_GREYSCALE);
 
     // initialize root console window
-    TCODConsole::initRoot(80, 48, "Xoria");
+    TCODConsole::initRoot(Settings::consoleWidth, Settings::consoleHeight, "Xoria");
 }
 
 void Game::render()
@@ -44,9 +44,10 @@ void Game::render()
     TCODConsole::root->clear();
 
     // draw map
-    map_.render();
+    world_.currentMap().lock()->render();
 
-    // TEST
+
+    // TODO: move Player to its own class
     TCODConsole::root->putChar(playerX_, playerY_, '@');
     TCODConsole::root->setCharForeground(playerX_, playerY_, TCODColor::lightAzure);
 
@@ -60,7 +61,7 @@ void Game::processNextEvent()
     TCOD_key_t key;
     TCODSystem::waitForEvent(TCOD_EVENT_KEY_PRESS, &key, nullptr, true);
 
-    //
+    // move player
     switch (key.vk) {
     case TCODK_UP:
         playerY_--;
@@ -78,6 +79,7 @@ void Game::processNextEvent()
         break;
     }
 
+    // quit game
     if (key.c) {
         switch (key.c) {
         case 'Q':

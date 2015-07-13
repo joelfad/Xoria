@@ -30,9 +30,8 @@ Usage Agreement:
 #ifndef TILE_H
 #define TILE_H
 
-#include <libtcod/libtcod.hpp>
 #include <string>
-
+#include <libtcod/libtcod.hpp>
 
 class Tile {
 public:

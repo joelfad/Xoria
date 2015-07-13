@@ -30,15 +30,15 @@ Usage Agreement:
 #ifndef MAP_H
 #define MAP_H
 
-#include "constants.h"
 #include <vector>
-
+#include "constants.h"
 
 class Map {
 public:
-    Map(int width, int height);
+    Map(int width = Settings::consoleWidth, int height = Settings::consoleHeight);
 
     void render();
+    /* draw map tiles on root console */
 
 private:
     int width_;

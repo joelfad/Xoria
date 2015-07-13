@@ -3,7 +3,7 @@ Project: Xoria
 File: tile.cpp
 Author: Joel McFadden
 Created: June 19, 2015
-Last Modified: June 23, 2015
+Last Modified: July 12, 2015
 
 Description:
     A simple sci-fi roguelike.

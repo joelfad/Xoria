@@ -31,7 +31,7 @@ Usage Agreement:
 #define GAME_H
 
 #include <libtcod/libtcod.hpp>
-#include "map.h"
+#include "world.h"
 
 class Game {
 public:
@@ -50,7 +50,7 @@ private:
     int playerX_;
     int playerY_;
     bool running_;
-    Map map_;
+    World world_;
 };
 
 #endif // GAME_H

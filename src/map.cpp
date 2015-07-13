@@ -31,10 +31,11 @@ Usage Agreement:
 
 Map::Map(int width, int height) : width_{width}, height_{height}, tiles_{(width * height), nullptr}
 {
+    // create a default map filled with grass and one wall
     for (auto& t : tiles_)
         t = &TileSet::GRASS;
 
-    tiles_[34] = &TileSet::WALL;
+    tiles_.at(34) = &TileSet::WALL;
 }
 
 void Map::render()
