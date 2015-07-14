@@ -44,6 +44,10 @@ private:
     int width_;
     int height_;
     std::vector<const Tile*> tiles_;
+
+public:
+    int playerX_;   // TEMP
+    int playerY_;   // TEMP
 };
 
 #endif // MAP_H

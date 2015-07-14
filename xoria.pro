@@ -16,7 +16,8 @@ SOURCES += \
     src/map.cpp \
     src/game.cpp \
     src/world.cpp \
-    src/tui.cpp
+    src/tui.cpp \
+    src/playscreen.cpp
 
 HEADERS += \
     src/tile.h \
@@ -24,4 +25,5 @@ HEADERS += \
     src/map.h \
     src/game.h \
     src/world.h \
-    src/tui.h
+    src/tui.h \
+    src/playscreen.h

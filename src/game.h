@@ -47,8 +47,6 @@ public:
     bool isRunning() const { return running_; }
 
 private:
-    int playerX_;
-    int playerY_;
     bool running_;
     World world_;
 };

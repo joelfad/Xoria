@@ -27,22 +27,26 @@ Usage Agreement:
     along with Xoria.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef SCREEN_H
-#define SCREEN_H
+#ifndef TUI_H
+#define TUI_H
 
 #include <memory>
 #include <libtcod/libtcod.hpp>
+#include "constants.h"
+#include "world.h"
 
 /// Text-based User Interface.
+/// Abstract base class for user input, game logic, and display.
 class TUI
 {
 public:
-    TUI(int width, int height) : console_{width, height}, width_{width}, height_{height} { }
+    TUI(World& world, int width = Settings::consoleWidth, int height = Settings::consoleHeight)
+        : console_{width, height}, world_{world}, width_{width}, height_{height} { }
 
     void waitForKeyPress();
     /* get user input */
 
-    virtual std::shared_ptr<TUI> processNextEvent() = 0;
+    virtual std::unique_ptr<TUI> processNextEvent() = 0;
     /* respond to user input */
 
     virtual void render() = 0;
@@ -53,7 +57,8 @@ public:
     bool isOpen() { return isOpen_; }
 
 protected:
-    TCODConsole::TCODConsole console_;
+    TCODConsole console_;
+    World& world_;
     int width_;
     int height_;
     int xPos;       // x-offset relative to root console (0, 0)
@@ -62,4 +67,4 @@ protected:
     bool isOpen_;
 };
 
-#endif // SCREEN_H
+#endif // TUI_H

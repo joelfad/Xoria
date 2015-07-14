@@ -29,7 +29,7 @@ Usage Agreement:
 
 #include "game.h"
 
-Game::Game() : playerX_{2}, playerY_{0}, running_{true}, world_{1}
+Game::Game() : running_{true}, world_{1}
 {
     // specify the font file, set to antialiased greyscale
     TCODConsole::setCustomFont("fonts/terminal16x16_gs_ro.png", TCOD_FONT_LAYOUT_ASCII_INROW | TCOD_FONT_TYPE_GREYSCALE);
@@ -40,16 +40,8 @@ Game::Game() : playerX_{2}, playerY_{0}, running_{true}, world_{1}
 
 void Game::render() const
 {
-    // clear console
-    TCODConsole::root->clear();
+    // render playscreen
 
-    // draw map
-    world_.currentMap().lock()->render();
-
-
-    // TODO: move Player to its own class
-    TCODConsole::root->putChar(playerX_, playerY_, '@');
-    TCODConsole::root->setCharForeground(playerX_, playerY_, TCODColor::lightAzure);
 
     // apply updates
     TCODConsole::root->flush();
@@ -61,32 +53,5 @@ void Game::processNextEvent()
     TCOD_key_t key;
     TCODSystem::waitForEvent(TCOD_EVENT_KEY_PRESS, &key, nullptr, true);
 
-    // move player
-    switch (key.vk) {
-    case TCODK_UP:
-        playerY_--;
-        break;
-    case TCODK_DOWN:
-        playerY_++;
-        break;
-    case TCODK_LEFT:
-        playerX_--;
-        break;
-    case TCODK_RIGHT:
-        playerX_++;
-        break;
-    default:
-        break;
-    }
 
-    // quit game
-    if (key.c) {
-        switch (key.c) {
-        case 'Q':
-            running_ = false;
-            break;
-        default:
-            break;
-        }
-    }
 }

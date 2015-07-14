@@ -32,13 +32,11 @@ Usage Agreement:
 World::World(const int numMaps)
 {
     // generate new maps and add to world
-    for (int i = 0; i < numMaps; i++) {
-        auto mapToAdd = std::make_shared<Map>(Map{});
-        maps_.push_back(mapToAdd);
-    }
+    for (int i = 0; i < numMaps; i++)
+        maps_.push_back(std::make_unique<Map>(Map{}));
 
     // set the current map to the first map
-    currentMap_ = maps_.front();
+    currentMapNo_ = 0;
 }
 
 void World::makeCave(Map &map)

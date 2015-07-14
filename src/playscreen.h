@@ -1,9 +1,9 @@
 /*
 Project: Xoria
-File: world.h
+File: playscreen.h
 Author: Joel McFadden
-Created: July 12, 2015
-Last Modified: July 12, 2015
+Created: July 13, 2015
+Last Modified: July 13, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -27,30 +27,23 @@ Usage Agreement:
     along with Xoria.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef WORLD_H
-#define WORLD_H
+#ifndef PLAYSCREEN_H
+#define PLAYSCREEN_H
 
-#include <vector>
-#include <memory>
-#include "map.h"
+#include "tui.h"
 
-class World
+/// Gameplay Screen.
+/// The primary interface where users will spend most of their time.
+class PlayScreen : public TUI
 {
 public:
-    World(const int numMaps);
-    /* generates default maps */
+    PlayScreen(World& world, int width = Settings::consoleWidth, int height = Settings::consoleHeight);
 
-    static void makeCave(Map& map);
-    /* turns a default map into a cave map */
+    virtual std::unique_ptr<TUI> processNextEvent() override;
+    /* respond to user input */
 
-    Map& currentMap() const { return *maps_.at(currentMapNo_); }
-    /* provides access to the current map */
-
-    using MapVector = std::vector<std::unique_ptr<Map>>;
-
-private:
-    MapVector maps_;
-    MapVector::size_type currentMapNo_;
+    virtual void render() override;
+    /* update the display */
 };
 
-#endif // WORLD_H
+#endif // PLAYSCREEN_H
