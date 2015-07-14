@@ -38,7 +38,7 @@ Game::Game() : playerX_{2}, playerY_{0}, running_{true}, world_{1}
     TCODConsole::initRoot(Settings::consoleWidth, Settings::consoleHeight, "Xoria");
 }
 
-void Game::render()
+void Game::render() const
 {
     // clear console
     TCODConsole::root->clear();

@@ -4,12 +4,18 @@ It will be updated regularly as new features are planned and implemented.
 
 Upcoming Features
 =================
-+ Save/Load maps as text files
++ Add Screen classes
++ Add Creature and Player classes
 + Add new types of tiles
 + Add tile properties
-+ Design UI layout
++ Save/Load maps as text files
++ Design UI layout and scrolling
++ Display player stats
++ Generate random cave
++ Add monsters that move randomly
 
 
 Implemented
 ===========
+2015-07-12 - Add World class
 2015-06-23 - Add README/COPYING/TODO

@@ -15,11 +15,13 @@ SOURCES += \
     src/tile.cpp \
     src/map.cpp \
     src/game.cpp \
-    src/world.cpp
+    src/world.cpp \
+    src/tui.cpp
 
 HEADERS += \
     src/tile.h \
     src/constants.h \
     src/map.h \
     src/game.h \
-    src/world.h
+    src/world.h \
+    src/tui.h

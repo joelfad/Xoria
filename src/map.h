@@ -37,7 +37,7 @@ class Map {
 public:
     Map(int width = Settings::consoleWidth, int height = Settings::consoleHeight);
 
-    void render();
+    void render() const;
     /* draw map tiles on root console */
 
 private:

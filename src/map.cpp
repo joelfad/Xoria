@@ -33,12 +33,12 @@ Map::Map(int width, int height) : width_{width}, height_{height}, tiles_{(width 
 {
     // create a default map filled with grass and one wall
     for (auto& t : tiles_)
-        t = &TileSet::GRASS;
+        t = &TileSet::grass;
 
-    tiles_.at(34) = &TileSet::WALL;
+    tiles_.at(34) = &TileSet::wall;
 }
 
-void Map::render()
+void Map::render() const
 {
     for (int i = 0; i < width_ * height_; i++)
         tiles_.at(i)->render(i % width_, i / width_);

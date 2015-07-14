@@ -39,8 +39,8 @@ namespace Settings {
 }
 
 namespace TileSet {
-    const Tile GRASS{"Grass", "green vegetation", '.', TCODColor::darkestChartreuse, TCODColor::black};
-    const Tile WALL{"Wall", "rock wall", '#', TCODColor::lightPink, TCODColor::black};
+    const Tile grass{"Grass", "green vegetation", '.', TCODColor::darkestChartreuse, TCODColor::black};
+    const Tile wall{"Wall", "rock wall", '#', TCODColor::lightPink, TCODColor::black};
 }
 
 #endif // CONSTANTS

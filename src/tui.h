@@ -1,9 +1,9 @@
 /*
 Project: Xoria
-File: tile.h
+File: TUI.h
 Author: Joel McFadden
-Created: June 19, 2015
-Last Modified: July 12, 2015
+Created: July 13, 2015
+Last Modified: July 13, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -27,26 +27,39 @@ Usage Agreement:
     along with Xoria.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef TILE_H
-#define TILE_H
+#ifndef SCREEN_H
+#define SCREEN_H
 
-#include <string>
+#include <memory>
 #include <libtcod/libtcod.hpp>
 
-class Tile {
+/// Text-based User Interface.
+class TUI
+{
 public:
-    Tile(const std::string& name, const std::string& description, int glyph, const TCODColor& fore, const TCODColor& back)
-        : name_{name}, description_{description}, glyph_{glyph}, fore_{fore}, back_{back} { }
+    TUI(int width, int height) : console_{width, height}, width_{width}, height_{height} { }
 
-    void render(int x, int y) const;
-    /* draw tile to root console */
+    void waitForKeyPress();
+    /* get user input */
 
-private:
-    std::string name_;
-    std::string description_;
-    int glyph_;
-    TCODColor fore_;
-    TCODColor back_;
+    virtual std::shared_ptr<TUI> processNextEvent() = 0;
+    /* respond to user input */
+
+    virtual void render() = 0;
+    /* update the display */
+
+    void close() { isOpen_ = false; }
+
+    bool isOpen() { return isOpen_; }
+
+protected:
+    TCODConsole::TCODConsole console_;
+    int width_;
+    int height_;
+    int xPos;       // x-offset relative to root console (0, 0)
+    int yPos;       // y-offset relative to root console (0, 0)
+    TCOD_key_t lastKeyPressed_;
+    bool isOpen_;
 };
 
-#endif // TILE_H
+#endif // SCREEN_H

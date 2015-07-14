@@ -38,13 +38,13 @@ public:
     Game();
     /* initializes the root console window */
 
-    void render();
+    void render() const;
     /* updates the root console */
 
     void processNextEvent();
     /* wait for user input and execute corresponding command */
 
-    bool isRunning() { return running_; }
+    bool isRunning() const { return running_; }
 
 private:
     int playerX_;

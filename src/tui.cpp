@@ -1,9 +1,9 @@
 /*
 Project: Xoria
-File: tile.h
+File: TUI.cpp
 Author: Joel McFadden
-Created: June 19, 2015
-Last Modified: July 12, 2015
+Created: July 13, 2015
+Last Modified: July 13, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -27,26 +27,12 @@ Usage Agreement:
     along with Xoria.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef TILE_H
-#define TILE_H
+#include "tui.h"
 
-#include <string>
-#include <libtcod/libtcod.hpp>
+void TUI::waitForKeyPress()
+{
+    // get keypress (blocking)
+    TCODSystem::waitForEvent(TCOD_EVENT_KEY_PRESS, &lastKeyPressed_, nullptr, true);
+}
 
-class Tile {
-public:
-    Tile(const std::string& name, const std::string& description, int glyph, const TCODColor& fore, const TCODColor& back)
-        : name_{name}, description_{description}, glyph_{glyph}, fore_{fore}, back_{back} { }
 
-    void render(int x, int y) const;
-    /* draw tile to root console */
-
-private:
-    std::string name_;
-    std::string description_;
-    int glyph_;
-    TCODColor fore_;
-    TCODColor back_;
-};
-
-#endif // TILE_H
