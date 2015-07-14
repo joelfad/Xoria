@@ -3,7 +3,7 @@ Project: Xoria
 File: map.cpp
 Author: Joel McFadden
 Created: June 19, 2015
-Last Modified: July 12, 2015
+Last Modified: July 14, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -29,17 +29,21 @@ Usage Agreement:
 
 #include "map.h"
 
-Map::Map(int width, int height) : width_{width}, height_{height}, tiles_{(width * height), nullptr}
+Map::Map(int width, int height)
+    : width_{width}, height_{height}, tiles_{width * height, nullptr}
 {
     // create a default map filled with grass and one wall
     for (auto& t : tiles_)
         t = &TileSet::grass;
 
     tiles_.at(34) = &TileSet::wall;
+
+    playerX_ = 5;   // TEMP starting position of player
+    playerY_ = 3;   // TEMP starting position of player
 }
 
-void Map::render() const
+void Map::render(TCODConsole* activeConsole) const
 {
     for (int i = 0; i < width_ * height_; i++)
-        tiles_.at(i)->render(i % width_, i / width_);
+        tiles_.at(i)->render(activeConsole, i % width_, i / width_);
 }

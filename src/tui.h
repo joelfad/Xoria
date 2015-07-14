@@ -3,7 +3,7 @@ Project: Xoria
 File: TUI.h
 Author: Joel McFadden
 Created: July 13, 2015
-Last Modified: July 13, 2015
+Last Modified: July 14, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -31,17 +31,15 @@ Usage Agreement:
 #define TUI_H
 
 #include <memory>
-#include <libtcod/libtcod.hpp>
 #include "constants.h"
 #include "world.h"
 
 /// Text-based User Interface.
 /// Abstract base class for user input, game logic, and display.
-class TUI
-{
+class TUI {
 public:
     TUI(World& world, int width = Settings::consoleWidth, int height = Settings::consoleHeight)
-        : console_{width, height}, world_{world}, width_{width}, height_{height} { }
+        : console_{width, height}, world_{world}, width_{width}, height_{height}, xPos{0}, yPos{0}, isOpen_{true} { }
 
     void waitForKeyPress();
     /* get user input */
@@ -53,8 +51,9 @@ public:
     /* update the display */
 
     void close() { isOpen_ = false; }
+    /* signal for game to destroy instance */
 
-    bool isOpen() { return isOpen_; }
+    bool isOpen() const { return isOpen_; }
 
 protected:
     TCODConsole console_;

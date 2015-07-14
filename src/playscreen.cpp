@@ -3,7 +3,7 @@ Project: Xoria
 File: playscreen.cpp
 Author: Joel McFadden
 Created: July 13, 2015
-Last Modified: July 13, 2015
+Last Modified: July 14, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -77,7 +77,7 @@ void PlayScreen::render()
     console_.clear();
 
     // draw map
-    world_.currentMap().render();
+    world_.currentMap().render(&console_);
 
     // draw player
     // TODO: move Player to its own class

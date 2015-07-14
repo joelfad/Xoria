@@ -3,7 +3,7 @@ Project: Xoria
 File: game.cpp
 Author: Joel McFadden
 Created: June 19, 2015
-Last Modified: July 12, 2015
+Last Modified: July 14, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -29,29 +29,36 @@ Usage Agreement:
 
 #include "game.h"
 
-Game::Game() : running_{true}, world_{1}
+Game::Game() : world_{1}
 {
     // specify the font file, set to antialiased greyscale
     TCODConsole::setCustomFont("fonts/terminal16x16_gs_ro.png", TCOD_FONT_LAYOUT_ASCII_INROW | TCOD_FONT_TYPE_GREYSCALE);
 
     // initialize root console window
     TCODConsole::initRoot(Settings::consoleWidth, Settings::consoleHeight, "Xoria");
+
+    // build TUI stack
+    consoles_.push_back(std::make_unique<PlayScreen>(world_));
 }
 
-void Game::render() const
+void Game::run()
 {
-    // render playscreen
+    while (!consoles_.empty()) {
+        // render TUI stack (from the bottom up)
+        for (auto& it : consoles_)
+            it->render();
 
+        // push frame to root console
+        TCODConsole::root->flush();
 
-    // apply updates
-    TCODConsole::root->flush();
-}
+        // wait for user input
+        consoles_.back()->waitForKeyPress();
 
-void Game::processNextEvent()
-{
-    // get keypress (blocking)
-    TCOD_key_t key;
-    TCODSystem::waitForEvent(TCOD_EVENT_KEY_PRESS, &key, nullptr, true);
+        // respond to input
+        consoles_.back()->processNextEvent();
 
-
+        // destroy console if no longer open
+        if (!consoles_.back()->isOpen())
+            consoles_.pop_back();
+    }
 }

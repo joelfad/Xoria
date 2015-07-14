@@ -3,7 +3,7 @@ Project: Xoria
 File: constants.h
 Author: Joel McFadden
 Created: June 19, 2015
-Last Modified: July 12, 2015
+Last Modified: July 14, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -30,7 +30,6 @@ Usage Agreement:
 #ifndef CONSTANTS
 #define CONSTANTS
 
-#include <libtcod/libtcod.hpp>
 #include "tile.h"
 
 namespace Settings {

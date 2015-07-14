@@ -3,7 +3,7 @@ Project: Xoria
 File: map.h
 Author: Joel McFadden
 Created: June 19, 2015
-Last Modified: July 12, 2015
+Last Modified: July 14, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -33,12 +33,14 @@ Usage Agreement:
 #include <vector>
 #include "constants.h"
 
+/// Setting of the game.
+/// Environment where creatures, tiles, and items interact.
 class Map {
 public:
     Map(int width = Settings::consoleWidth, int height = Settings::consoleHeight);
 
-    void render() const;
-    /* draw map tiles on root console */
+    void render(TCODConsole* activeConsole) const;
+    /* draw map tiles on active console */
 
 private:
     int width_;

@@ -3,7 +3,7 @@ Project: Xoria
 File: game.h
 Author: Joel McFadden
 Created: June 19, 2015
-Last Modified: July 12, 2015
+Last Modified: July 14, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -30,25 +30,28 @@ Usage Agreement:
 #ifndef GAME_H
 #define GAME_H
 
+#include <vector>
+#include <memory>
 #include <libtcod/libtcod.hpp>
-#include "world.h"
+#include "playscreen.h"
 
+class World;
+
+/// Manages the game state and TUI stack.
+/// Initializes, runs, and terminates the game.
 class Game {
 public:
     Game();
-    /* initializes the root console window */
+    /* initialize */
 
-    void render() const;
-    /* updates the root console */
+    void run();
 
-    void processNextEvent();
-    /* wait for user input and execute corresponding command */
-
-    bool isRunning() const { return running_; }
+    using TUIStack = std::vector<std::unique_ptr<TUI>>;
+    // conceptual "stack" implemented with std::vector for iterators
 
 private:
-    bool running_;
-    World world_;
+    World world_;       // collection of maps
+    TUIStack consoles_; // text-based user interface stack
 };
 
 #endif // GAME_H

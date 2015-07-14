@@ -3,7 +3,7 @@ Project: Xoria
 File: world.h
 Author: Joel McFadden
 Created: July 12, 2015
-Last Modified: July 12, 2015
+Last Modified: July 14, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -34,8 +34,9 @@ Usage Agreement:
 #include <memory>
 #include "map.h"
 
-class World
-{
+/// Collection of Maps.
+/// Generates and stores game maps.
+class World {
 public:
     World(const int numMaps);
     /* generates default maps */
