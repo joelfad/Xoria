@@ -3,7 +3,7 @@ Project: Xoria
 File: game.cpp
 Author: Joel McFadden
 Created: June 19, 2015
-Last Modified: July 14, 2015
+Last Modified: July 15, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -43,13 +43,9 @@ Game::Game() : world_{1}
 
 void Game::run()
 {
-    while (!consoles_.empty()) {
-        // render TUI stack (from the bottom up)
-        for (auto& it : consoles_)
-            it->render();
-
-        // push frame to root console
-        TCODConsole::root->flush();
+    while (isRunning()) {
+        // update display
+        renderConsoles();
 
         // wait for user input
         consoles_.back()->waitForKeyPress();
@@ -57,8 +53,23 @@ void Game::run()
         // respond to input
         consoles_.back()->processNextEvent();
 
-        // destroy console if no longer open
+        // destroy top console if no longer open
         if (!consoles_.back()->isOpen())
             consoles_.pop_back();
     }
+}
+
+bool Game::isRunning()
+{
+    return (!consoles_.empty() && !TCODConsole::root->isWindowClosed());
+}
+
+void Game::renderConsoles()
+{
+    // render TUI stack (from the bottom up)
+    for (auto& it : consoles_)
+        it->render();
+
+    // push frame to root console
+    TCODConsole::root->flush();
 }
