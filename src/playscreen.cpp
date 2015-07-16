@@ -3,7 +3,7 @@ Project: Xoria
 File: playscreen.cpp
 Author: Joel McFadden
 Created: July 13, 2015
-Last Modified: July 14, 2015
+Last Modified: July 15, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -30,11 +30,11 @@ Usage Agreement:
 #include "playscreen.h"
 
 PlayScreen::PlayScreen(World& world, int width, int height)
-    : TUI{world, width, height}
+    : Tui{world, width, height}
 {
 }
 
-std::unique_ptr<TUI> PlayScreen::processNextEvent()
+std::unique_ptr<Tui> PlayScreen::processNextEvent()
 {
     int& playerX = world_.currentMap().playerX_; // TEMP
     int& playerY = world_.currentMap().playerY_; // TEMP

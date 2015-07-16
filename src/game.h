@@ -48,7 +48,7 @@ public:
 
     bool isRunning();
 
-    using TUIStack = std::vector<std::unique_ptr<TUI>>;
+    using TUIStack = std::vector<std::unique_ptr<Tui>>;
     // conceptual "stack" implemented with std::vector for iterators
 
 private:

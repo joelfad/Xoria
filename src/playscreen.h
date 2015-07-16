@@ -3,7 +3,7 @@ Project: Xoria
 File: playscreen.h
 Author: Joel McFadden
 Created: July 13, 2015
-Last Modified: July 14, 2015
+Last Modified: July 15, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -34,11 +34,11 @@ Usage Agreement:
 
 /// Gameplay Screen.
 /// The primary interface where users will spend most of their time.
-class PlayScreen : public TUI {
+class PlayScreen : public Tui {
 public:
     PlayScreen(World& world, int width = Settings::consoleWidth, int height = Settings::consoleHeight);
 
-    virtual std::unique_ptr<TUI> processNextEvent() override;
+    virtual std::unique_ptr<Tui> processNextEvent() override;
     /* respond to user input */
 
     virtual void render() override;
