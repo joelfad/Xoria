@@ -7,6 +7,7 @@ CONFIG += warn_on
 CONFIG += debug
 CONFIG += c++14
 
+unix:INCLUDEPATH += include
 unix:INCLUDEPATH += /usr/include/libtcod
 LIBS += -ltcod -ltcodxx
 
@@ -20,10 +21,10 @@ SOURCES += \
     src/playscreen.cpp
 
 HEADERS += \
-    src/tile.h \
-    src/constants.h \
-    src/map.h \
-    src/game.h \
-    src/world.h \
-    src/tui.h \
-    src/playscreen.h
+    include/tile.h \
+    include/constants.h \
+    include/map.h \
+    include/game.h \
+    include/world.h \
+    include/tui.h \
+    include/playscreen.h
