@@ -32,7 +32,7 @@ Usage Agreement:
 
 #include <vector>
 #include <memory>
-#include <libtcod/libtcod.hpp>
+#include <libtcod.hpp>
 #include "playscreen.h"
 
 class World;
