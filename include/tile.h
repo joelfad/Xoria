@@ -32,6 +32,7 @@ Usage Agreement:
 
 #include "mapobject.h"
 
+/// Discrete element of game environment
 class Tile : public MapObject {
 public:
     Tile(const std::string& name, const std::string& description,

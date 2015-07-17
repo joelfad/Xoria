@@ -1,8 +1,8 @@
 /*
 Project: Xoria
-File: mapobject.h
+File: entity.cpp
 Author: Joel McFadden
-Created: June 19, 2015
+Created: July 17, 2015
 Last Modified: July 17, 2015
 
 Description:
@@ -27,36 +27,4 @@ Usage Agreement:
     along with Xoria.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef MAPOBJECT_H
-#define MAPOBJECT_H
-
-#include <string>
-#include <libtcod.hpp>
-
-/// Building blocks of a map
-/// Abstract base class for tiles, entities, items, etc.
-class MapObject {
-protected:
-    MapObject(const std::string& name, const std::string& description,
-              int glyph, const TCODColor& fore, const TCODColor& back)
-        : name_{name}, description_{description}, glyph_{glyph}, fore_{fore}, back_{back} { }
-
-    struct Coord;
-
-    std::string name_;
-    std::string description_;
-    int glyph_;
-    TCODColor fore_;
-    TCODColor back_;
-};
-
-/// Set of (x, y) coordinates on a map.
-struct MapObject::Coord {
-    int x;
-    int y;
-
-    // TODO: overload operators
-    // bool operator==(const Coord& lhs, const Coord& rhs);
-};
-
-#endif // MAPOBJECT_H
+#include "entity.h"
