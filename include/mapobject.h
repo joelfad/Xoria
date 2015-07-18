@@ -3,7 +3,7 @@ Project: Xoria
 File: mapobject.h
 Author: Joel McFadden
 Created: June 19, 2015
-Last Modified: July 17, 2015
+Last Modified: July 18, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -37,9 +37,12 @@ Usage Agreement:
 /// Abstract base class for tiles, entities, items, etc.
 class MapObject {
 protected:
-    MapObject(const std::string& name, const std::string& description,
-              int glyph, const TCODColor& fore, const TCODColor& back)
-        : name_{name}, description_{description}, glyph_{glyph}, fore_{fore}, back_{back} { }
+    MapObject(const std::string& name,
+              const std::string& description,
+              int glyph,
+              const TCODColor& fore)
+        : name_{name}, description_{description}, glyph_{glyph}, fore_{fore}
+    { }
 
     struct Coord;
 
@@ -47,7 +50,6 @@ protected:
     std::string description_;
     int glyph_;
     TCODColor fore_;
-    TCODColor back_;
 };
 
 /// Set of (x, y) coordinates on a map.

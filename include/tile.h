@@ -3,7 +3,7 @@ Project: Xoria
 File: tile.h
 Author: Joel McFadden
 Created: June 19, 2015
-Last Modified: July 14, 2015
+Last Modified: July 18, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -35,13 +35,19 @@ Usage Agreement:
 /// Discrete element of game environment
 class Tile : public MapObject {
 public:
-    Tile(const std::string& name, const std::string& description,
-         int glyph, const TCODColor& fore, const TCODColor& back)
-        : MapObject{name, description, glyph, fore, back} { }
+    Tile(const std::string& name,
+         const std::string& description,
+         int glyph,
+         const TCODColor& fore,
+         const TCODColor& back)
+        : MapObject{name, description, glyph, fore}, back_{back}
+    { }
 
     void render(TCODConsole* activeConsole, int x, int y) const;
     /* draw tile to active console */
 
+private:
+    TCODColor back_;
 };
 
 #endif // TILE_H
