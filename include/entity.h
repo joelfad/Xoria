@@ -37,12 +37,12 @@ Usage Agreement:
 /// Abstract base class for creatures, npcs, and player.
 class Entity : public MapObject {
 public:
-    Coord& pos()    const { return pos_;        }
-    int health()    const { return health_;     }
-    int maxHealth() const { return maxHealth_;  }
-    int damage()    const { return damage_;     }
-    int armour()    const { return armour_;     }
-    int accuracy()  const { return accuracy_;   }
+    const Coord& pos()  const { return pos_;        }
+    int health()        const { return health_;     }
+    int maxHealth()     const { return maxHealth_;  }
+    int damage()        const { return damage_;     }
+    int armour()        const { return armour_;     }
+    int accuracy()      const { return accuracy_;   }
 
 protected:
     Entity(const Coord& pos,

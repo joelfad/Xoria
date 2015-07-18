@@ -1,8 +1,8 @@
 /*
 Project: Xoria
-File: constants.h
+File: player.cpp
 Author: Joel McFadden
-Created: June 19, 2015
+Created: July 18, 2015
 Last Modified: July 18, 2015
 
 Description:
@@ -27,30 +27,4 @@ Usage Agreement:
     along with Xoria.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef CONSTANTS
-#define CONSTANTS
-
-#include "tile.h"
-
-namespace Settings {
-    const int consoleWidth = 80;
-    const int consoleHeight = 48;
-}
-
-namespace Default {
-    const std::string playerName = "Explorer";
-    const std::string playerDescription = "A fearless hero, lost on an alien world...";
-    const TCODColor playerColor = TCODColor::lightAzure;
-    const int playerHealth = 10;
-    const int playerDamage = 1;
-    const int playerArmour = 0;
-    const int playerAccuracy = 1;
-}
-
-namespace TileSet {
-    const Tile grass{"Grass", "green vegetation", '.', TCODColor::darkestChartreuse, TCODColor::black};
-    const Tile wall{"Wall", "rock wall", '#', TCODColor::lightPink, TCODColor::black};
-}
-
-#endif // CONSTANTS
-
+#include "player.h"

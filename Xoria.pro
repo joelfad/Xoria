@@ -20,7 +20,8 @@ SOURCES += \
     src/tui.cpp \
     src/playscreen.cpp \
     src/mapobject.cpp \
-    src/entity.cpp
+    src/entity.cpp \
+    src/player.cpp
 
 HEADERS += \
     include/tile.h \
@@ -31,4 +32,5 @@ HEADERS += \
     include/tui.h \
     include/playscreen.h \
     include/mapobject.h \
-    include/entity.h
+    include/entity.h \
+    include/player.h
