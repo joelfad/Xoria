@@ -21,7 +21,8 @@ SOURCES += \
     src/playscreen.cpp \
     src/mapobject.cpp \
     src/entity.cpp \
-    src/player.cpp
+    src/player.cpp \
+    src/coord.cpp
 
 HEADERS += \
     include/tile.h \
@@ -33,4 +34,5 @@ HEADERS += \
     include/playscreen.h \
     include/mapobject.h \
     include/entity.h \
-    include/player.h
+    include/player.h \
+    include/coord.h

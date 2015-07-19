@@ -1,8 +1,8 @@
 /*
 Project: Xoria
-File: mapobject.h
+File: coord.cpp
 Author: Joel McFadden
-Created: June 19, 2015
+Created: July 19, 2015
 Last Modified: July 19, 2015
 
 Description:
@@ -27,27 +27,34 @@ Usage Agreement:
     along with Xoria.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef MAPOBJECT_H
-#define MAPOBJECT_H
+#include "coord.h"
 
-#include <string>
-#include <libtcod.hpp>
+void Coord::set(int newX, int newY)
+{
+    x = newX;
+    y = newY;
+}
 
-/// Building blocks of a map
-/// Abstract base class for tiles, entities, items, etc.
-class MapObject {
-protected:
-    MapObject(const std::string& name,
-              const std::string& description,
-              int glyph,
-              const TCODColor& fore)
-        : name_{name}, description_{description}, glyph_{glyph}, fore_{fore}
-    { }
+void Coord::offset(int dx, int dy)
+{
+    x += dx;
+    y += dy;
+}
 
-    std::string name_;
-    std::string description_;
-    int glyph_;
-    TCODColor fore_;
-};
+double Coord::distance(const Coord& c1, const Coord& c2)
+{
+    int dx = c1.x - c2.x;
+    int dy = c1.y - c2.y;
 
-#endif // MAPOBJECT_H
+    return sqrt((dx * dx) + (dy * dy));
+}
+
+bool operator==(const Coord& lhs, const Coord& rhs)
+{
+    return (lhs.x == rhs.x) && (lhs.y == rhs.y);
+}
+
+bool operator!=(const Coord& lhs, const Coord& rhs)
+{
+    return !(lhs == rhs);
+}

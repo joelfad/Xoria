@@ -3,7 +3,7 @@ Project: Xoria
 File: entity.h
 Author: Joel McFadden
 Created: July 17, 2015
-Last Modified: July 18, 2015
+Last Modified: July 19, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -32,6 +32,7 @@ Usage Agreement:
 
 #include "constants.h"
 #include "mapobject.h"
+#include "coord.h"
 
 /// Beings that interact with the game environment.
 /// Abstract base class for creatures, npcs, and player.
