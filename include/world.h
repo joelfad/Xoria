@@ -3,7 +3,7 @@ Project: Xoria
 File: world.h
 Author: Joel McFadden
 Created: July 12, 2015
-Last Modified: July 14, 2015
+Last Modified: July 20, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -41,11 +41,11 @@ public:
     World(const int numMaps);
     /* generates default maps */
 
+    Map& currentMap() const;
+    /* provides access to the current map */
+
     static void makeCave(Map& map);
     /* turns a default map into a cave map */
-
-    Map& currentMap() const { return *maps_.at(currentMapNo_); }
-    /* provides access to the current map */
 
     using MapVector = std::vector<std::unique_ptr<Map>>;
 

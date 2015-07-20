@@ -3,7 +3,7 @@ Project: Xoria
 File: entity.h
 Author: Joel McFadden
 Created: July 17, 2015
-Last Modified: July 19, 2015
+Last Modified: July 20, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -38,12 +38,13 @@ Usage Agreement:
 /// Abstract base class for creatures, npcs, and player.
 class Entity : public MapObject {
 public:
-    const Coord& pos()  const { return pos_;        }
-    int health()        const { return health_;     }
-    int maxHealth()     const { return maxHealth_;  }
-    int damage()        const { return damage_;     }
-    int armour()        const { return armour_;     }
-    int accuracy()      const { return accuracy_;   }
+    // TODO: remove some of these if they are not needed
+    const Coord& getPos()  const;
+    int getHealth()        const;
+    int getMaxHealth()     const;
+    int getDamage()        const;
+    int getArmour()        const;
+    int getAccuracy()      const;
 
 protected:
     Entity(const Coord& pos,

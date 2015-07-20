@@ -3,7 +3,7 @@ Project: Xoria
 File: coord.h
 Author: Joel McFadden
 Created: July 19, 2015
-Last Modified: July 19, 2015
+Last Modified: July 20, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -45,12 +45,12 @@ struct Coord {
 
     static double distance(const Coord& c1, const Coord& c2);
     /* computes the distance between two map coordinates */
+
+    bool operator==(const Coord& rhs) const;
+    /* compares two sets of map coordinates for equality */
+
+    bool operator!=(const Coord& rhs) const;
+    /* compares two sets of map coordinates for inequality */
 };
-
-bool operator==(const Coord& lhs, const Coord& rhs);
-/* compares two sets of map coordinates for equality */
-
-bool operator!=(const Coord& lhs, const Coord& rhs);
-/* compares two sets of map coordinates for inequality */
 
 #endif // COORD_H

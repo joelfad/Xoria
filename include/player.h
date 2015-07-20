@@ -3,7 +3,7 @@ Project: Xoria
 File: player.h
 Author: Joel McFadden
 Created: July 18, 2015
-Last Modified: July 18, 2015
+Last Modified: July 20, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -54,7 +54,7 @@ public:
                 accuracy}
     { }
 
-    int energy() const { return energy_; }
+    int getEnergy() const;
     /* returns the number of energy tokens the player is carrying */
 
 private:

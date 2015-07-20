@@ -3,7 +3,7 @@ Project: Xoria
 File: entity.cpp
 Author: Joel McFadden
 Created: July 17, 2015
-Last Modified: July 17, 2015
+Last Modified: July 20, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -28,3 +28,33 @@ Usage Agreement:
 */
 
 #include "entity.h"
+
+const Coord& Entity::getPos() const
+{
+    return pos_;
+}
+
+int Entity::getHealth() const
+{
+    return health_;
+}
+
+int Entity::getMaxHealth() const
+{
+    return maxHealth_;
+}
+
+int Entity::getDamage() const
+{
+    return damage_;
+}
+
+int Entity::getArmour() const
+{
+    return armour_;
+}
+
+int Entity::getAccuracy() const
+{
+    return accuracy_;
+}

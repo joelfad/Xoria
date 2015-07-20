@@ -3,7 +3,7 @@ Project: Xoria
 File: coord.cpp
 Author: Joel McFadden
 Created: July 19, 2015
-Last Modified: July 19, 2015
+Last Modified: July 20, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -49,12 +49,12 @@ double Coord::distance(const Coord& c1, const Coord& c2)
     return sqrt((dx * dx) + (dy * dy));
 }
 
-bool operator==(const Coord& lhs, const Coord& rhs)
+bool Coord::operator==(const Coord& rhs) const
 {
-    return (lhs.x == rhs.x) && (lhs.y == rhs.y);
+    return (x == rhs.x) && (y == rhs.y);
 }
 
-bool operator!=(const Coord& lhs, const Coord& rhs)
+bool Coord::operator!=(const Coord& rhs) const
 {
-    return !(lhs == rhs);
+    return !Coord::operator ==(rhs);
 }

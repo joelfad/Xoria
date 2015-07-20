@@ -3,7 +3,7 @@ Project: Xoria
 File: player.cpp
 Author: Joel McFadden
 Created: July 18, 2015
-Last Modified: July 18, 2015
+Last Modified: July 20, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -28,3 +28,8 @@ Usage Agreement:
 */
 
 #include "player.h"
+
+int Player::getEnergy() const
+{
+    return energy_;
+}
