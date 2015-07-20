@@ -57,6 +57,8 @@ public:
     int getEnergy() const;
     /* returns the number of energy tokens the player is carrying */
 
+    void move(int dx, int dy) override;
+
 private:
     // non-inventory quantities
     int energy_;

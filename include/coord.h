@@ -37,6 +37,9 @@ struct Coord {
     int x;
     int y;
 
+    Coord(int x = 0, int y = 0) : x{x}, y{y}
+    { }
+
     void set(int newX, int newY);
     /* changes coordinates to (newX, newY) */
 

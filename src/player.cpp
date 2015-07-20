@@ -33,3 +33,8 @@ int Player::getEnergy() const
 {
     return energy_;
 }
+
+void Player::move(int dx, int dy)
+{
+    pos_.offset(dx, dy);
+}

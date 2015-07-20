@@ -46,6 +46,9 @@ public:
     int getArmour()        const;
     int getAccuracy()      const;
 
+    void render(TCODConsole* activeConsole) const;
+    virtual void move(int dx, int dy) = 0;
+
 protected:
     Entity(const Coord& pos,
            const std::string& name,

@@ -3,7 +3,7 @@ Project: Xoria
 File: map.h
 Author: Joel McFadden
 Created: June 19, 2015
-Last Modified: July 14, 2015
+Last Modified: July 20, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -31,7 +31,10 @@ Usage Agreement:
 #define MAP_H
 
 #include <vector>
+#include <list>
+#include <memory>
 #include "constants.h"
+#include "player.h"
 
 /// Setting of the game.
 /// Environment where creatures, tiles, and items interact.
@@ -40,16 +43,18 @@ public:
     Map(int width = Settings::consoleWidth, int height = Settings::consoleHeight);
 
     void render(TCODConsole* activeConsole) const;
-    /* draw map tiles on active console */
+    /* draw map objects on active console */
+
+    using EntityList = std::list<std::unique_ptr<Entity>>;
+    // list of entities on the map
+
+    Entity& getPlayer();
 
 private:
     int width_;
     int height_;
     std::vector<const Tile*> tiles_;
-
-public:
-    int playerX_;   // TEMP
-    int playerY_;   // TEMP
+    EntityList entities_;
 };
 
 #endif // MAP_H

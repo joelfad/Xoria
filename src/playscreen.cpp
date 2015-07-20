@@ -3,7 +3,7 @@ Project: Xoria
 File: playscreen.cpp
 Author: Joel McFadden
 Created: July 13, 2015
-Last Modified: July 15, 2015
+Last Modified: July 20, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -36,22 +36,22 @@ PlayScreen::PlayScreen(World& world, int width, int height)
 
 std::unique_ptr<Tui> PlayScreen::processNextEvent()
 {
-    int& playerX = world_.currentMap().playerX_; // TEMP
-    int& playerY = world_.currentMap().playerY_; // TEMP
+    // TODO: Refactor player's turn into separate method
+    Entity& player = world_.currentMap().getPlayer();
 
     // move player
     switch (lastKeyPressed_.vk) {
     case TCODK_UP:
-        playerY--;
+        player.move( 0, -1);
         break;
     case TCODK_DOWN:
-        playerY++;
+        player.move( 0,  1);
         break;
     case TCODK_LEFT:
-        playerX--;
+        player.move(-1,  0);
         break;
     case TCODK_RIGHT:
-        playerX++;
+        player.move( 1,  0);
         break;
     default:
         break;
@@ -68,6 +68,8 @@ std::unique_ptr<Tui> PlayScreen::processNextEvent()
         }
     }
 
+    // TODO: Add function call for creatures' turns
+
     return nullptr;
 }
 
@@ -78,14 +80,6 @@ void PlayScreen::render()
 
     // draw map
     world_.currentMap().render(&console_);
-
-    // draw player
-    // TODO: move Player to its own class
-    int playerX = world_.currentMap().playerX_; // TEMP
-    int playerY = world_.currentMap().playerY_; // TEMP
-
-    console_.putChar(playerX, playerY, '@');
-    console_.setCharForeground(playerX, playerY, TCODColor::lightAzure);
 
     // blit to root console
     TCODConsole::blit(&console_, 0, 0, 0, 0, TCODConsole::root, 0, 0);

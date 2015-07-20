@@ -58,3 +58,9 @@ int Entity::getAccuracy() const
 {
     return accuracy_;
 }
+
+void Entity::render(TCODConsole* activeConsole) const
+{
+    activeConsole->putChar(pos_.x, pos_.y, glyph_);
+    activeConsole->setCharForeground(pos_.x, pos_.y, fore_);
+}
