@@ -3,7 +3,7 @@ Project: Xoria
 File: player.h
 Author: Joel McFadden
 Created: July 18, 2015
-Last Modified: July 20, 2015
+Last Modified: July 21, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -31,6 +31,7 @@ Usage Agreement:
 #define PLAYER_H
 
 #include "entity.h"
+#include "constants.h"
 
 /// Player Character
 /// Entity controlled by user.

@@ -3,7 +3,7 @@ Project: Xoria
 File: entity.h
 Author: Joel McFadden
 Created: July 17, 2015
-Last Modified: July 20, 2015
+Last Modified: July 21, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -30,7 +30,6 @@ Usage Agreement:
 #ifndef ENTITY_H
 #define ENTITY_H
 
-#include "constants.h"
 #include "mapobject.h"
 #include "coord.h"
 

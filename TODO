@@ -4,18 +4,19 @@ It will be updated regularly as new features are planned and implemented.
 
 Upcoming Features
 =================
-+ Add Creature and Player classes
-+ Add new types of tiles
++ Add ability for monsters to move randomly
 + Add tile properties
++ Add new types of tiles
 + Save/Load maps as text files
 + Design UI layout and scrolling
 + Display player stats
 + Generate random cave
-+ Add monsters that move randomly
++ Add basic meelee combat
 
 
 Implemented
 ===========
+2015-07-21 - Add Player and Monster classes
 2015-07-14 - Add TUI and PlayScreen classes
 2015-07-12 - Add World class
 2015-06-23 - Add README/COPYING/TODO

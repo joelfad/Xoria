@@ -22,7 +22,8 @@ SOURCES += \
     src/mapobject.cpp \
     src/entity.cpp \
     src/player.cpp \
-    src/coord.cpp
+    src/coord.cpp \
+    src/monster.cpp
 
 HEADERS += \
     include/tile.h \
@@ -35,4 +36,5 @@ HEADERS += \
     include/mapobject.h \
     include/entity.h \
     include/player.h \
-    include/coord.h
+    include/coord.h \
+    include/monster.h

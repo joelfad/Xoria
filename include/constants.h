@@ -3,7 +3,7 @@ Project: Xoria
 File: constants.h
 Author: Joel McFadden
 Created: June 19, 2015
-Last Modified: July 18, 2015
+Last Modified: July 21, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -31,6 +31,7 @@ Usage Agreement:
 #define CONSTANTS
 
 #include "tile.h"
+#include "monster.h"
 
 namespace Settings {
     const int consoleWidth = 80;
@@ -50,6 +51,10 @@ namespace Default {
 namespace TileSet {
     const Tile grass{"Grass", "green vegetation", '.', TCODColor::darkestChartreuse, TCODColor::black};
     const Tile wall{"Wall", "rock wall", '#', TCODColor::lightPink, TCODColor::black};
+}
+
+namespace MonsterSet {
+    const Monster spaceSlug{"Space Slug", "harmless alien gastropod", 's', TCODColor::lightGreen, 1, 2, 1, 0, 1, true};
 }
 
 #endif // CONSTANTS

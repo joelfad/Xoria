@@ -39,6 +39,7 @@ Map::Map(int width, int height)
     tiles_.at(34) = &TileSet::wall;
 
     entities_.push_front(std::make_unique<Player>(Coord(5, 3)));
+    entities_.push_back(std::make_unique<Monster>(Coord(20, 10), MonsterSet::spaceSlug));
 }
 
 void Map::render(TCODConsole* activeConsole) const
