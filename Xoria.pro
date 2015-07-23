@@ -23,7 +23,8 @@ SOURCES += \
     src/entity.cpp \
     src/player.cpp \
     src/coord.cpp \
-    src/monster.cpp
+    src/monster.cpp \
+    src/utility.cpp
 
 HEADERS += \
     include/tile.h \
@@ -37,4 +38,5 @@ HEADERS += \
     include/entity.h \
     include/player.h \
     include/coord.h \
-    include/monster.h
+    include/monster.h \
+    include/utility.h

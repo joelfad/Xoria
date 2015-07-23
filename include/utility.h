@@ -1,8 +1,8 @@
 /*
 Project: Xoria
-File: world.cpp
+File: utility.h
 Author: Joel McFadden
-Created: July 12, 2015
+Created: July 22, 2015
 Last Modified: July 23, 2015
 
 Description:
@@ -27,27 +27,40 @@ Usage Agreement:
     along with Xoria.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "world.h"
+#ifndef UTILITY_H
+#define UTILITY_H
 
-World::World(const int numMaps)
-{
-    // initialize utilities
-    Utility::init();
+#include <random>
 
-    // generate new maps and add to world
-    for (int i = 0; i < numMaps; i++)
-        maps_.push_back(std::make_unique<Map>());
+namespace Utility {
 
-    // set the current map to the first map
-    currentMapNo_ = 0;
+extern uint16_t seed;
+extern std::mt19937 RNG;
+
+void init(uint16_t setSeed = 0);
+/* seed may be specified using setSeed (optional) */
+
+int randInt(int min, int max);
+/* gets a random integer between min and max (inclusive) */
+
+int rollD(int numSides);
+/* rolls a numSides sided dice */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
-Map& World::currentMap() const
-{
-    return *maps_.at(currentMapNo_);
-}
-
-void World::makeCave(Map &map)
-{
-    // TODO: turn an default map into a cave map
-}
+#endif // UTILITY_H

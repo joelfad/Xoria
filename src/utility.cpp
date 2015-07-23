@@ -1,8 +1,8 @@
 /*
 Project: Xoria
-File: world.cpp
+File: utility.cpp
 Author: Joel McFadden
-Created: July 12, 2015
+Created: July 22, 2015
 Last Modified: July 23, 2015
 
 Description:
@@ -27,27 +27,38 @@ Usage Agreement:
     along with Xoria.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "world.h"
+#include "utility.h"
 
-World::World(const int numMaps)
+uint16_t Utility::seed;
+std::mt19937 Utility::RNG;
+
+void Utility::init(uint16_t setSeed)
 {
-    // initialize utilities
-    Utility::init();
+    /* Initialize RNG */
 
-    // generate new maps and add to world
-    for (int i = 0; i < numMaps; i++)
-        maps_.push_back(std::make_unique<Map>());
+    // generate new seed if not provided
+    if (setSeed == 0) {
+        std::random_device rd;
+        std::uniform_int_distribution<int> seedDist(1, UINT16_MAX);
+        std::mt19937 generateNewSeed(rd());
+        seed = seedDist(generateNewSeed);
+    }
+    // otherwise, set seed to provided value
+    else {
+        seed = setSeed;
+    }
 
-    // set the current map to the first map
-    currentMapNo_ = 0;
+    // seed the random number generator
+    RNG.seed(seed);
 }
 
-Map& World::currentMap() const
+int Utility::randInt(int min, int max)
 {
-    return *maps_.at(currentMapNo_);
+    std::uniform_int_distribution<int> dist(min, max);
+    return dist(RNG);
 }
 
-void World::makeCave(Map &map)
+int Utility::rollD(int numSides)
 {
-    // TODO: turn an default map into a cave map
+    return randInt(1, numSides);
 }
