@@ -3,7 +3,7 @@ Project: Xoria
 File: playscreen.h
 Author: Joel McFadden
 Created: July 13, 2015
-Last Modified: July 15, 2015
+Last Modified: July 22, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -43,6 +43,13 @@ public:
 
     virtual void render() override;
     /* update the display */
+
+private:
+    std::unique_ptr<Tui> processPlayerEvent();
+    /* player's turn */
+
+    void processMonsterEvents();
+    /* monsters' turns */
 };
 
 #endif // PLAYSCREEN_H

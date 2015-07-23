@@ -3,7 +3,7 @@ Project: Xoria
 File: playscreen.cpp
 Author: Joel McFadden
 Created: July 13, 2015
-Last Modified: July 20, 2015
+Last Modified: July 22, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -36,7 +36,29 @@ PlayScreen::PlayScreen(World& world, int width, int height)
 
 std::unique_ptr<Tui> PlayScreen::processNextEvent()
 {
-    // TODO: Refactor player's turn into separate method
+    // player's turn
+    std::unique_ptr<Tui> nextScreen = processPlayerEvent();
+
+    // monsters' turns
+    processMonsterEvents();
+
+    return nextScreen;
+}
+
+void PlayScreen::render()
+{
+    // clear screen
+    console_.clear();
+
+    // draw map
+    world_.currentMap().render(&console_);
+
+    // blit to root console
+    TCODConsole::blit(&console_, 0, 0, 0, 0, TCODConsole::root, 0, 0);
+}
+
+std::unique_ptr<Tui> PlayScreen::processPlayerEvent()
+{
     Entity& player = world_.currentMap().getPlayer();
 
     // move player
@@ -68,19 +90,10 @@ std::unique_ptr<Tui> PlayScreen::processNextEvent()
         }
     }
 
-    // TODO: Add function call for creatures' turns
-
     return nullptr;
 }
 
-void PlayScreen::render()
+void PlayScreen::processMonsterEvents()
 {
-    // clear screen
-    console_.clear();
 
-    // draw map
-    world_.currentMap().render(&console_);
-
-    // blit to root console
-    TCODConsole::blit(&console_, 0, 0, 0, 0, TCODConsole::root, 0, 0);
 }
