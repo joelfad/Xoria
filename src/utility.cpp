@@ -1,9 +1,9 @@
 /*
 Project: Xoria
-File: map.h
+File: utility.cpp
 Author: Joel McFadden
-Created: June 19, 2015
-Last Modified: July 24, 2015
+Created: July 22, 2015
+Last Modified: July 23, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -27,40 +27,38 @@ Usage Agreement:
     along with Xoria.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef MAP_H
-#define MAP_H
-
-#include <vector>
-#include <list>
-#include <memory>
-#include "constants.h"
 #include "utility.h"
-#include "player.h"
-#include "monster.h"
 
-/// Setting of the game.
-/// Environment where creatures, tiles, and items interact.
-class Map {
-public:
-    Map(int width = Settings::consoleWidth, int height = Settings::consoleHeight);
+uint16_t Utility::seed;
+std::mt19937 Utility::RNG;
 
-    void render(TCODConsole* activeConsole) const;
-    /* draw map objects on active console */
+void Utility::init(uint16_t setSeed)
+{
+    /* Initialize RNG */
 
-    using EntityList = std::list<std::unique_ptr<Entity>>;
-    // list of entities on the map
+    // generate new seed if not provided
+    if (setSeed == 0) {
+        std::random_device rd;
+        std::uniform_int_distribution<int> seedDist(1, UINT16_MAX);
+        std::mt19937 generateNewSeed(rd());
+        seed = seedDist(generateNewSeed);
+    }
+    // otherwise, set seed to provided value
+    else {
+        seed = setSeed;
+    }
 
-    Entity& getPlayer();
+    // seed the random number generator
+    RNG.seed(seed);
+}
 
-    EntityList::iterator beginMonsters();
+int Utility::randInt(int min, int max)
+{
+    std::uniform_int_distribution<int> dist(min, max);
+    return dist(RNG);
+}
 
-    EntityList::iterator endMonsters();
-
-private:
-    int width_;
-    int height_;
-    std::vector<const Tile*> tiles_;
-    EntityList entities_;
-};
-
-#endif // MAP_H
+int Utility::rollD(int numSides)
+{
+    return randInt(1, numSides);
+}

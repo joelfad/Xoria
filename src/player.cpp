@@ -1,9 +1,9 @@
 /*
 Project: Xoria
-File: map.h
+File: player.cpp
 Author: Joel McFadden
-Created: June 19, 2015
-Last Modified: July 24, 2015
+Created: July 18, 2015
+Last Modified: July 20, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -27,40 +27,14 @@ Usage Agreement:
     along with Xoria.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef MAP_H
-#define MAP_H
-
-#include <vector>
-#include <list>
-#include <memory>
-#include "constants.h"
-#include "utility.h"
 #include "player.h"
-#include "monster.h"
 
-/// Setting of the game.
-/// Environment where creatures, tiles, and items interact.
-class Map {
-public:
-    Map(int width = Settings::consoleWidth, int height = Settings::consoleHeight);
+int Player::getEnergy() const
+{
+    return energy_;
+}
 
-    void render(TCODConsole* activeConsole) const;
-    /* draw map objects on active console */
-
-    using EntityList = std::list<std::unique_ptr<Entity>>;
-    // list of entities on the map
-
-    Entity& getPlayer();
-
-    EntityList::iterator beginMonsters();
-
-    EntityList::iterator endMonsters();
-
-private:
-    int width_;
-    int height_;
-    std::vector<const Tile*> tiles_;
-    EntityList entities_;
-};
-
-#endif // MAP_H
+void Player::move(int dx, int dy)
+{
+    pos_.offset(dx, dy);
+}

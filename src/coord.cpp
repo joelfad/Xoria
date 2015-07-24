@@ -1,9 +1,9 @@
 /*
 Project: Xoria
-File: tile.h
+File: coord.cpp
 Author: Joel McFadden
-Created: June 19, 2015
-Last Modified: July 18, 2015
+Created: July 19, 2015
+Last Modified: July 20, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -27,27 +27,34 @@ Usage Agreement:
     along with Xoria.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef TILE_H
-#define TILE_H
+#include "coord.h"
 
-#include "mapobject.h"
+void Coord::set(int newX, int newY)
+{
+    x = newX;
+    y = newY;
+}
 
-/// Discrete element of game environment
-class Tile : public MapObject {
-public:
-    Tile(const std::string& name,
-         const std::string& description,
-         int glyph,
-         const TCODColor& fore,
-         const TCODColor& back)
-        : MapObject{name, description, glyph, fore}, back_{back}
-    { }
+void Coord::offset(int dx, int dy)
+{
+    x += dx;
+    y += dy;
+}
 
-    void render(TCODConsole* activeConsole, int x, int y) const;
-    /* draw tile to active console */
+double Coord::distance(const Coord& c1, const Coord& c2)
+{
+    int dx = c1.x - c2.x;
+    int dy = c1.y - c2.y;
 
-private:
-    TCODColor back_;
-};
+    return sqrt((dx * dx) + (dy * dy));
+}
 
-#endif // TILE_H
+bool Coord::operator==(const Coord& rhs) const
+{
+    return (x == rhs.x) && (y == rhs.y);
+}
+
+bool Coord::operator!=(const Coord& rhs) const
+{
+    return !Coord::operator ==(rhs);
+}

@@ -19,7 +19,12 @@ SOURCES += \
     src/world.cpp \
     src/tui.cpp \
     src/playscreen.cpp \
-    src/mapobject.cpp
+    src/mapobject.cpp \
+    src/entity.cpp \
+    src/player.cpp \
+    src/coord.cpp \
+    src/monster.cpp \
+    src/utility.cpp
 
 HEADERS += \
     include/tile.h \
@@ -29,4 +34,9 @@ HEADERS += \
     include/world.h \
     include/tui.h \
     include/playscreen.h \
-    include/mapobject.h
+    include/mapobject.h \
+    include/entity.h \
+    include/player.h \
+    include/coord.h \
+    include/monster.h \
+    include/utility.h

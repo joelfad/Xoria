@@ -3,7 +3,7 @@ Project: Xoria
 File: mapobject.h
 Author: Joel McFadden
 Created: June 19, 2015
-Last Modified: July 16, 2015
+Last Modified: July 19, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -33,18 +33,21 @@ Usage Agreement:
 #include <string>
 #include <libtcod.hpp>
 
+/// Building blocks of a map
+/// Abstract base class for tiles, entities, items, etc.
 class MapObject {
-public:
-    MapObject(const std::string& name, const std::string& description,
-              int glyph, const TCODColor& fore, const TCODColor& back)
-        : name_{name}, description_{description}, glyph_{glyph}, fore_{fore}, back_{back} { }
-
 protected:
+    MapObject(const std::string& name,
+              const std::string& description,
+              int glyph,
+              const TCODColor& fore)
+        : name_{name}, description_{description}, glyph_{glyph}, fore_{fore}
+    { }
+
     std::string name_;
     std::string description_;
     int glyph_;
     TCODColor fore_;
-    TCODColor back_;
 };
 
 #endif // MAPOBJECT_H

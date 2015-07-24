@@ -3,7 +3,7 @@ Project: Xoria
 File: TUI.h
 Author: Joel McFadden
 Created: July 13, 2015
-Last Modified: July 15, 2015
+Last Modified: July 20, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -50,10 +50,10 @@ public:
     virtual void render() = 0;
     /* update the display */
 
-    void close() { isOpen_ = false; }
+    void close();
     /* signal for game to destroy instance */
 
-    bool isOpen() const { return isOpen_; }
+    bool isOpen() const;
 
 protected:
     TCODConsole console_;

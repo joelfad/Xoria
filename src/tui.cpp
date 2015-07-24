@@ -3,7 +3,7 @@ Project: Xoria
 File: TUI.cpp
 Author: Joel McFadden
 Created: July 13, 2015
-Last Modified: July 15, 2015
+Last Modified: July 20, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -35,4 +35,12 @@ void Tui::waitForKeyPress()
     TCODSystem::waitForEvent(TCOD_EVENT_KEY_PRESS, &lastKeyPressed_, nullptr, true);
 }
 
+void Tui::close()
+{
+    isOpen_ = false;
+}
 
+bool Tui::isOpen() const
+{
+    return isOpen_;
+}

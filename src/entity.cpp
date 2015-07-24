@@ -1,9 +1,9 @@
 /*
 Project: Xoria
-File: tile.h
+File: entity.cpp
 Author: Joel McFadden
-Created: June 19, 2015
-Last Modified: July 18, 2015
+Created: July 17, 2015
+Last Modified: July 20, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -27,27 +27,40 @@ Usage Agreement:
     along with Xoria.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef TILE_H
-#define TILE_H
+#include "entity.h"
 
-#include "mapobject.h"
+const Coord& Entity::getPos() const
+{
+    return pos_;
+}
 
-/// Discrete element of game environment
-class Tile : public MapObject {
-public:
-    Tile(const std::string& name,
-         const std::string& description,
-         int glyph,
-         const TCODColor& fore,
-         const TCODColor& back)
-        : MapObject{name, description, glyph, fore}, back_{back}
-    { }
+int Entity::getHealth() const
+{
+    return health_;
+}
 
-    void render(TCODConsole* activeConsole, int x, int y) const;
-    /* draw tile to active console */
+int Entity::getMaxHealth() const
+{
+    return maxHealth_;
+}
 
-private:
-    TCODColor back_;
-};
+int Entity::getDamage() const
+{
+    return damage_;
+}
 
-#endif // TILE_H
+int Entity::getArmour() const
+{
+    return armour_;
+}
+
+int Entity::getAccuracy() const
+{
+    return accuracy_;
+}
+
+void Entity::render(TCODConsole* activeConsole) const
+{
+    activeConsole->putChar(pos_.x, pos_.y, glyph_);
+    activeConsole->setCharForeground(pos_.x, pos_.y, fore_);
+}

@@ -1,9 +1,9 @@
 /*
 Project: Xoria
-File: tile.h
+File: utility.h
 Author: Joel McFadden
-Created: June 19, 2015
-Last Modified: July 18, 2015
+Created: July 22, 2015
+Last Modified: July 23, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -27,27 +27,40 @@ Usage Agreement:
     along with Xoria.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef TILE_H
-#define TILE_H
+#ifndef UTILITY_H
+#define UTILITY_H
 
-#include "mapobject.h"
+#include <random>
 
-/// Discrete element of game environment
-class Tile : public MapObject {
-public:
-    Tile(const std::string& name,
-         const std::string& description,
-         int glyph,
-         const TCODColor& fore,
-         const TCODColor& back)
-        : MapObject{name, description, glyph, fore}, back_{back}
-    { }
+namespace Utility {
 
-    void render(TCODConsole* activeConsole, int x, int y) const;
-    /* draw tile to active console */
+extern uint16_t seed;
+extern std::mt19937 RNG;
 
-private:
-    TCODColor back_;
-};
+void init(uint16_t setSeed = 0);
+/* seed may be specified using setSeed (optional) */
 
-#endif // TILE_H
+int randInt(int min, int max);
+/* gets a random integer between min and max (inclusive) */
+
+int rollD(int numSides);
+/* rolls a numSides sided dice */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+#endif // UTILITY_H

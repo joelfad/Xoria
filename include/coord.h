@@ -1,9 +1,9 @@
 /*
 Project: Xoria
-File: tile.h
+File: coord.h
 Author: Joel McFadden
-Created: June 19, 2015
-Last Modified: July 18, 2015
+Created: July 19, 2015
+Last Modified: July 20, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -27,27 +27,33 @@ Usage Agreement:
     along with Xoria.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef TILE_H
-#define TILE_H
+#ifndef COORD_H
+#define COORD_H
 
-#include "mapobject.h"
+#include <cmath>
 
-/// Discrete element of game environment
-class Tile : public MapObject {
-public:
-    Tile(const std::string& name,
-         const std::string& description,
-         int glyph,
-         const TCODColor& fore,
-         const TCODColor& back)
-        : MapObject{name, description, glyph, fore}, back_{back}
+/// Set of (x, y) map coordinates.
+struct Coord {
+    int x;
+    int y;
+
+    Coord(int x = 0, int y = 0) : x{x}, y{y}
     { }
 
-    void render(TCODConsole* activeConsole, int x, int y) const;
-    /* draw tile to active console */
+    void set(int newX, int newY);
+    /* changes coordinates to (newX, newY) */
 
-private:
-    TCODColor back_;
+    void offset(int dx, int dy);
+    /* changes coordinates to (x+dx, y+dy) */
+
+    static double distance(const Coord& c1, const Coord& c2);
+    /* computes the distance between two map coordinates */
+
+    bool operator==(const Coord& rhs) const;
+    /* compares two sets of map coordinates for equality */
+
+    bool operator!=(const Coord& rhs) const;
+    /* compares two sets of map coordinates for inequality */
 };
 
-#endif // TILE_H
+#endif // COORD_H

@@ -3,7 +3,7 @@ Project: Xoria
 File: playscreen.cpp
 Author: Joel McFadden
 Created: July 13, 2015
-Last Modified: July 15, 2015
+Last Modified: July 24, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -36,22 +36,44 @@ PlayScreen::PlayScreen(World& world, int width, int height)
 
 std::unique_ptr<Tui> PlayScreen::processNextEvent()
 {
-    int& playerX = world_.currentMap().playerX_; // TEMP
-    int& playerY = world_.currentMap().playerY_; // TEMP
+    // player's turn
+    std::unique_ptr<Tui> nextScreen = processPlayerEvent();
+
+    // monsters' turns
+    processMonsterEvents();
+
+    return nextScreen;
+}
+
+void PlayScreen::render()
+{
+    // clear screen
+    console_.clear();
+
+    // draw map
+    world_.currentMap().render(&console_);
+
+    // blit to root console
+    TCODConsole::blit(&console_, 0, 0, 0, 0, TCODConsole::root, 0, 0);
+}
+
+std::unique_ptr<Tui> PlayScreen::processPlayerEvent()
+{
+    Entity& player = world_.currentMap().getPlayer();
 
     // move player
     switch (lastKeyPressed_.vk) {
     case TCODK_UP:
-        playerY--;
+        player.move( 0, -1);
         break;
     case TCODK_DOWN:
-        playerY++;
+        player.move( 0,  1);
         break;
     case TCODK_LEFT:
-        playerX--;
+        player.move(-1,  0);
         break;
     case TCODK_RIGHT:
-        playerX++;
+        player.move( 1,  0);
         break;
     default:
         break;
@@ -71,22 +93,27 @@ std::unique_ptr<Tui> PlayScreen::processNextEvent()
     return nullptr;
 }
 
-void PlayScreen::render()
+void PlayScreen::processMonsterEvents()
 {
-    // clear screen
-    console_.clear();
+    // iterate through monsters
+    for (auto it = world_.currentMap().beginMonsters(); it != world_.currentMap().endMonsters(); ++it) {
 
-    // draw map
-    world_.currentMap().render(&console_);
-
-    // draw player
-    // TODO: move Player to its own class
-    int playerX = world_.currentMap().playerX_; // TEMP
-    int playerY = world_.currentMap().playerY_; // TEMP
-
-    console_.putChar(playerX, playerY, '@');
-    console_.setCharForeground(playerX, playerY, TCODColor::lightAzure);
-
-    // blit to root console
-    TCODConsole::blit(&console_, 0, 0, 0, 0, TCODConsole::root, 0, 0);
+        // move randomly
+        switch (Utility::randInt(0, 4)) {
+        case 1:
+            (*it)->move( 0, -1); // move up
+            break;
+        case 2:
+            (*it)->move( 0,  1); // move down
+            break;
+        case 3:
+            (*it)->move(-1,  0); // move left
+            break;
+        case 4:
+            (*it)->move( 1,  0); // move right
+            break;
+        default:
+            break;               // skip turn
+        }
+    }
 }
