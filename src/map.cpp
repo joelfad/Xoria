@@ -3,7 +3,7 @@ Project: Xoria
 File: map.cpp
 Author: Joel McFadden
 Created: June 19, 2015
-Last Modified: July 20, 2015
+Last Modified: July 24, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -40,6 +40,7 @@ Map::Map(int width, int height)
 
     entities_.push_front(std::make_unique<Player>(Coord(5, 3)));
     entities_.push_back(std::make_unique<Monster>(Coord(20, 10), MonsterSet::spaceSlug));
+    entities_.push_back(std::make_unique<Monster>(Coord(16, 14), MonsterSet::spaceSlug));
 }
 
 void Map::render(TCODConsole* activeConsole) const
@@ -56,4 +57,14 @@ void Map::render(TCODConsole* activeConsole) const
 Entity& Map::getPlayer()
 {
     return *entities_.front();
+}
+
+Map::EntityList::iterator Map::beginMonsters()
+{
+    return ++entities_.begin();
+}
+
+Map::EntityList::iterator Map::endMonsters()
+{
+    return entities_.end();
 }

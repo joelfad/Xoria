@@ -3,7 +3,7 @@ Project: Xoria
 File: playscreen.cpp
 Author: Joel McFadden
 Created: July 13, 2015
-Last Modified: July 22, 2015
+Last Modified: July 24, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -95,5 +95,25 @@ std::unique_ptr<Tui> PlayScreen::processPlayerEvent()
 
 void PlayScreen::processMonsterEvents()
 {
+    // iterate through monsters
+    for (auto it = world_.currentMap().beginMonsters(); it != world_.currentMap().endMonsters(); ++it) {
 
+        // move randomly
+        switch (Utility::randInt(0, 4)) {
+        case 1:
+            (*it)->move( 0, -1); // move up
+            break;
+        case 2:
+            (*it)->move( 0,  1); // move down
+            break;
+        case 3:
+            (*it)->move(-1,  0); // move left
+            break;
+        case 4:
+            (*it)->move( 1,  0); // move right
+            break;
+        default:
+            break;               // skip turn
+        }
+    }
 }

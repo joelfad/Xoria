@@ -3,7 +3,7 @@ Project: Xoria
 File: map.h
 Author: Joel McFadden
 Created: June 19, 2015
-Last Modified: July 21, 2015
+Last Modified: July 24, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -34,6 +34,7 @@ Usage Agreement:
 #include <list>
 #include <memory>
 #include "constants.h"
+#include "utility.h"
 #include "player.h"
 #include "monster.h"
 
@@ -50,6 +51,10 @@ public:
     // list of entities on the map
 
     Entity& getPlayer();
+
+    EntityList::iterator beginMonsters();
+
+    EntityList::iterator endMonsters();
 
 private:
     int width_;
