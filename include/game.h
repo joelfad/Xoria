@@ -3,7 +3,7 @@ Project: Xoria
 File: game.h
 Author: Joel McFadden
 Created: June 19, 2015
-Last Modified: July 15, 2015
+Last Modified: July 25, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -48,12 +48,15 @@ public:
 
     bool isRunning();
 
-    using TUIStack = std::vector<std::unique_ptr<Tui>>;
+    using TuiStack = std::vector<std::unique_ptr<Tui>>;
     // conceptual "stack" implemented with std::vector for iterators
 
 private:
     World world_;       // collection of maps
-    TUIStack consoles_; // text-based user interface stack
+    TuiStack consoles_; // text-based user interface stack
+
+    void closeConsoleCheck();
+    /* remove top console if closed */
 
     void renderConsoles();
     /* render TUI stack on root console */

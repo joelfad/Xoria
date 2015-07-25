@@ -3,7 +3,7 @@ Project: Xoria
 File: monster.h
 Author: Joel McFadden
 Created: July 21, 2015
-Last Modified: July 21, 2015
+Last Modified: July 25, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -63,7 +63,7 @@ public:
     bool isFriendly() const;
     /* returns true if creature is non-hostile */
 
-    void move(int dx, int dy) override;
+    virtual void move(int dx, int dy) override;
 
 private:
     bool friendly_;

@@ -1,9 +1,9 @@
 /*
 Project: Xoria
-File: TUI.h
+File: Tui.h
 Author: Joel McFadden
 Created: July 13, 2015
-Last Modified: July 20, 2015
+Last Modified: July 25, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -44,7 +44,7 @@ public:
     void waitForKeyPress();
     /* get user input */
 
-    virtual std::unique_ptr<Tui> processNextEvent() = 0;
+    virtual void processNextEvent() = 0;
     /* respond to user input */
 
     virtual void render() = 0;

@@ -3,7 +3,7 @@ Project: Xoria
 File: playscreen.cpp
 Author: Joel McFadden
 Created: July 13, 2015
-Last Modified: July 24, 2015
+Last Modified: July 25, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -34,15 +34,12 @@ PlayScreen::PlayScreen(World& world, int width, int height)
 {
 }
 
-std::unique_ptr<Tui> PlayScreen::processNextEvent()
+void PlayScreen::processNextEvent()
 {
-    // player's turn
-    std::unique_ptr<Tui> nextScreen = processPlayerEvent();
+    if (!PlayerTurn())
+        return; // player has not made a turn, skip monsters
 
-    // monsters' turns
-    processMonsterEvents();
-
-    return nextScreen;
+    MonsterTurns();
 }
 
 void PlayScreen::render()
@@ -57,43 +54,46 @@ void PlayScreen::render()
     TCODConsole::blit(&console_, 0, 0, 0, 0, TCODConsole::root, 0, 0);
 }
 
-std::unique_ptr<Tui> PlayScreen::processPlayerEvent()
+bool PlayScreen::PlayerTurn()
 {
     Entity& player = world_.currentMap().getPlayer();
 
     // move player
-    switch (lastKeyPressed_.vk) {
-    case TCODK_UP:
-        player.move( 0, -1);
-        break;
-    case TCODK_DOWN:
-        player.move( 0,  1);
-        break;
-    case TCODK_LEFT:
-        player.move(-1,  0);
-        break;
-    case TCODK_RIGHT:
-        player.move( 1,  0);
-        break;
-    default:
-        break;
-    }
-
-    // quit game
-    if (lastKeyPressed_.c) {
+    if (lastKeyPressed_.vk == TCODK_CHAR) {
         switch (lastKeyPressed_.c) {
-        case 'Q':
+        case 'Q':                   // quit game
             close();
+            // fallthrough
+        default:
+            return false;
+        }
+    }
+    else {
+        switch (lastKeyPressed_.vk) {
+        case TCODK_UP:              // move up
+            player.move( 0, -1);
+            break;
+        case TCODK_DOWN:            // move down
+            player.move( 0,  1);
+            break;
+        case TCODK_LEFT:            // move left
+            player.move(-1,  0);
+            break;
+        case TCODK_RIGHT:           // move right
+            player.move( 1,  0);
+            break;
+        case TCODK_SPACE:           // skip turn
             break;
         default:
-            break;
+            return false;
         }
     }
 
-    return nullptr;
+    // player has made a turn
+    return true;
 }
 
-void PlayScreen::processMonsterEvents()
+void PlayScreen::MonsterTurns()
 {
     // iterate through monsters
     for (auto it = world_.currentMap().beginMonsters(); it != world_.currentMap().endMonsters(); ++it) {

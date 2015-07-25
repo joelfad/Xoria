@@ -3,7 +3,7 @@ Project: Xoria
 File: game.cpp
 Author: Joel McFadden
 Created: June 19, 2015
-Last Modified: July 15, 2015
+Last Modified: July 25, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -53,15 +53,20 @@ void Game::run()
         // respond to input
         consoles_.back()->processNextEvent();
 
-        // destroy top console if no longer open
-        if (!consoles_.back()->isOpen())
-            consoles_.pop_back();
+        // remove top console if closed
+        closeConsoleCheck();
     }
 }
 
 bool Game::isRunning()
 {
     return (!consoles_.empty() && !TCODConsole::root->isWindowClosed());
+}
+
+void Game::closeConsoleCheck()
+{
+    if (!consoles_.back()->isOpen())
+        consoles_.pop_back();
 }
 
 void Game::renderConsoles()

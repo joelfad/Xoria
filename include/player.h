@@ -3,7 +3,7 @@ Project: Xoria
 File: player.h
 Author: Joel McFadden
 Created: July 18, 2015
-Last Modified: July 21, 2015
+Last Modified: July 25, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -58,7 +58,7 @@ public:
     int getEnergy() const;
     /* returns the number of energy tokens the player is carrying */
 
-    void move(int dx, int dy) override;
+    virtual void move(int dx, int dy) override;
 
 private:
     // non-inventory quantities
