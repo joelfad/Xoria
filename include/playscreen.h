@@ -3,7 +3,7 @@ Project: Xoria
 File: playscreen.h
 Author: Joel McFadden
 Created: July 13, 2015
-Last Modified: July 25, 2015
+Last Modified: July 26, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -30,13 +30,13 @@ Usage Agreement:
 #ifndef PLAYSCREEN_H
 #define PLAYSCREEN_H
 
-#include "tui.h"
+#include "game.h"
 
 /// Gameplay Screen.
 /// The primary interface where users will spend most of their time.
 class PlayScreen : public Tui {
 public:
-    PlayScreen(World& world, int width = Settings::consoleWidth, int height = Settings::consoleHeight);
+    PlayScreen(Game& game, int width = Settings::consoleWidth, int height = Settings::consoleHeight);
 
     virtual void processNextEvent() override;
     /* respond to user input */

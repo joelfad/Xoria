@@ -3,7 +3,7 @@ Project: Xoria
 File: playscreen.cpp
 Author: Joel McFadden
 Created: July 13, 2015
-Last Modified: July 25, 2015
+Last Modified: July 26, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -29,8 +29,8 @@ Usage Agreement:
 
 #include "playscreen.h"
 
-PlayScreen::PlayScreen(World& world, int width, int height)
-    : Tui{world, width, height}
+PlayScreen::PlayScreen(Game& game, int width, int height)
+    : Tui{game, width, height}
 {
 }
 
@@ -48,7 +48,7 @@ void PlayScreen::render()
     console_.clear();
 
     // draw map
-    world_.currentMap().render(&console_);
+    game_.currentMap().render(&console_);
 
     // blit to root console
     TCODConsole::blit(&console_, 0, 0, 0, 0, TCODConsole::root, 0, 0);
@@ -56,7 +56,7 @@ void PlayScreen::render()
 
 bool PlayScreen::PlayerTurn()
 {
-    Entity& player = world_.currentMap().getPlayer();
+    Entity& player = game_.currentMap().getPlayer();
 
     // move player
     if (lastKeyPressed_.vk == TCODK_CHAR) {
@@ -96,7 +96,7 @@ bool PlayScreen::PlayerTurn()
 void PlayScreen::MonsterTurns()
 {
     // iterate through monsters
-    for (auto it = world_.currentMap().beginMonsters(); it != world_.currentMap().endMonsters(); ++it) {
+    for (auto it = game_.currentMap().beginMonsters(); it != game_.currentMap().endMonsters(); ++it) {
 
         // move randomly
         switch (Utility::randInt(0, 4)) {

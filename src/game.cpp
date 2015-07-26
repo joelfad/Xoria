@@ -3,7 +3,7 @@ Project: Xoria
 File: game.cpp
 Author: Joel McFadden
 Created: June 19, 2015
-Last Modified: July 25, 2015
+Last Modified: July 26, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -28,6 +28,7 @@ Usage Agreement:
 */
 
 #include "game.h"
+#include "playscreen.h"
 
 Game::Game() : world_{1}
 {
@@ -38,7 +39,7 @@ Game::Game() : world_{1}
     TCODConsole::initRoot(Settings::consoleWidth, Settings::consoleHeight, "Xoria");
 
     // build TUI stack
-    consoles_.push_back(std::make_unique<PlayScreen>(world_));
+    openNew<PlayScreen>();
 }
 
 void Game::run()
@@ -61,6 +62,17 @@ void Game::run()
 bool Game::isRunning()
 {
     return (!consoles_.empty() && !TCODConsole::root->isWindowClosed());
+}
+
+Map& Game::currentMap()
+{
+    return world_.currentMap();
+}
+
+template <class T>
+void Game::openNew()
+{
+    consoles_.push_back(std::make_unique<T>(*this));
 }
 
 void Game::closeConsoleCheck()
