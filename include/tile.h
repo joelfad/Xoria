@@ -3,7 +3,7 @@ Project: Xoria
 File: tile.h
 Author: Joel McFadden
 Created: June 19, 2015
-Last Modified: July 18, 2015
+Last Modified: July 27, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -39,8 +39,9 @@ public:
          const std::string& description,
          int glyph,
          const TCODColor& fore,
-         const TCODColor& back)
-        : MapObject{name, description, glyph, fore}, back_{back}
+         const TCODColor& back,
+         const unsigned long defaultFlags = 0UL)
+        : MapObject{name, description, glyph, fore}, back_{back}, defaultFlags_{defaultFlags}
     { }
 
     void render(TCODConsole* activeConsole, int x, int y) const;
@@ -48,6 +49,7 @@ public:
 
 private:
     TCODColor back_;
+    uint_fast32_t defaultFlags_;
 };
 
 #endif // TILE_H

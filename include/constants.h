@@ -48,9 +48,24 @@ namespace Default {
     const int playerAccuracy = 1;
 }
 
+enum class TileFlag : uint_fast32_t {
+    canWalk     = 0x0001,
+    canSwim     = 0x0002,
+    canFly      = 0x0004,
+    canDig      = 0x0008,
+    canOpen     = 0x0010,
+    canPush     = 0x0020,
+    visible     = 0x0040,
+    discovered  = 0x0080,
+    hasEntity   = 0x0100,
+    hasItem     = 0x0200,
+    hasPortal   = 0x0400,
+    hasEvent    = 0x0800
+};
+
 namespace TileSet {
-    const Tile grass{"Grass", "green vegetation", '.', TCODColor::darkestChartreuse, TCODColor::black};
-    const Tile wall{"Wall", "rock wall", '#', TCODColor::lightPink, TCODColor::black};
+    const Tile grass{"Grass", "green vegetation", '.', TCODColor::darkestChartreuse, TCODColor::black, 0x0005};
+    const Tile wall{"Wall", "rock wall", '#', TCODColor::lightPink, TCODColor::black, 0x0000};
 }
 
 namespace MonsterSet {
