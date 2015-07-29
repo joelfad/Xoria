@@ -30,7 +30,7 @@ Usage Agreement:
 #include "map.h"
 
 Map::Map(int width, int height)
-    : width_{width}, height_{height}, tiles_{width * height, nullptr}, tileProps_{width * height, 0}
+    : width_{width}, height_{height}, tiles_(width * height, nullptr), tileProps_(width * height, 0)
 {
     // create a default map filled with grass and one wall
     for (int x = 0; x < width_; x++)
