@@ -3,7 +3,7 @@ Project: Xoria
 File: tile.h
 Author: Joel McFadden
 Created: June 19, 2015
-Last Modified: July 27, 2015
+Last Modified: July 28, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -46,6 +46,8 @@ public:
 
     void render(TCODConsole* activeConsole, int x, int y) const;
     /* draw tile to active console */
+
+    uint_fast32_t getDefaultProps() const;
 
 private:
     TCODColor back_;
