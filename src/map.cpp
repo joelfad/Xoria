@@ -3,7 +3,7 @@ Project: Xoria
 File: map.cpp
 Author: Joel McFadden
 Created: June 19, 2015
-Last Modified: July 28, 2015
+Last Modified: July 29, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -59,12 +59,18 @@ void Map::render(TCODConsole* activeConsole) const
 
 Properties& Map::getProps(int x, int y)
 {
-    return tileProps_.at(x + y * width_);
+    if (x < 0 || x >= width_ || y < 0 || y >= height_)
+        return Properties::null();
+    else
+        return tileProps_.at(x + y * width_);
 }
 
 Properties& Map::getProps(const Coord &c)
 {
-    return tileProps_.at(c.x + c.y * width_);
+    if (c.x < 0 || c.x >= width_ || c.y < 0 || c.y >= height_)
+        return Properties::null();
+    else
+        return tileProps_.at(c.x + c.y * width_);
 }
 
 Entity& Map::getPlayer()

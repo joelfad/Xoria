@@ -3,7 +3,7 @@ Project: Xoria
 File: playscreen.h
 Author: Joel McFadden
 Created: July 13, 2015
-Last Modified: July 26, 2015
+Last Modified: July 29, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -45,9 +45,12 @@ public:
     /* update the display */
 
 private:
-    bool PlayerTurn();
+    bool playerTurn();
 
-    void MonsterTurns();
+    void monsterTurns();
+
+    void tryMove(Entity& entity, int dx, int dy);
+    /* check map and attempt to move entity */
 };
 
 #endif // PLAYSCREEN_H

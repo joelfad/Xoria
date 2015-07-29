@@ -3,7 +3,7 @@ Project: Xoria
 File: Properties
 Author: Joel McFadden
 Created: July 27, 2015
-Last Modified: July 28, 2015
+Last Modified: July 29, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -118,3 +118,11 @@ uint_fast32_t operator|(uint_fast32_t lhs, TileFlag rhs)
 {
     return lhs | static_cast<uint_fast32_t>(rhs);
 }
+
+Properties& Properties::null()
+{
+    null_.zero();
+    return null_;
+}
+
+Properties Properties::null_{0};

@@ -3,7 +3,7 @@ Project: Xoria
 File: properties.h
 Author: Joel McFadden
 Created: July 27, 2015
-Last Modified: July 28, 2015
+Last Modified: July 29, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -74,8 +74,11 @@ public:
 
     bool operator!=(const Properties& rhs) const;
 
+    static Properties& null();
+
 private:
     uint_fast32_t flagField_;
+    static Properties null_;    // out of bounds
 };
 
 uint_fast32_t operator|(TileFlag lhs, TileFlag rhs);
