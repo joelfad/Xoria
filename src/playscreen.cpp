@@ -70,20 +70,20 @@ bool PlayScreen::playerTurn()
     }
     else {
         switch (lastKeyPressed_.vk) {
-        case TCODK_UP:                  // move up
-            tryMove(player,  0, -1);
+        case TCODK_UP:
+            tryMove(player,  0, -1); // move up
             break;
-        case TCODK_DOWN:                // move down
-            tryMove(player,  0,  1);
+        case TCODK_DOWN:
+            tryMove(player,  0,  1); // move down
             break;
-        case TCODK_LEFT:                // move left
-            tryMove(player, -1,  0);
+        case TCODK_LEFT:
+            tryMove(player, -1,  0); // move left
             break;
-        case TCODK_RIGHT:               // move right
-            tryMove(player,  1,  0);
+        case TCODK_RIGHT:
+            tryMove(player,  1,  0); // move right
             break;
-        case TCODK_SPACE:               // skip turn
-            break;
+        case TCODK_SPACE:
+            break;                   // skip turn
         default:
             return false;
         }
@@ -101,29 +101,31 @@ void PlayScreen::monsterTurns()
         // move randomly
         switch (Utility::randInt(0, 4)) {
         case 1:
-            (*it)->move( 0, -1); // move up
+            tryMove(**it,  0, -1); // move up
             break;
         case 2:
-            (*it)->move( 0,  1); // move down
+            tryMove(**it,  0,  1); // move down
             break;
         case 3:
-            (*it)->move(-1,  0); // move left
+            tryMove(**it, -1,  0); // move left
             break;
         case 4:
-            (*it)->move( 1,  0); // move right
+            tryMove(**it,  1,  0); // move right
             break;
         default:
-            break;               // skip turn
+            break;                 // skip turn
         }
     }
 }
 
 void PlayScreen::tryMove(Entity& entity, int dx, int dy)
 {
-    Coord currentPos = entity.getPos();
-    Coord nextPos = {currentPos.x + dx, currentPos.y + dy};
-    Properties& nextTile = game_.currentMap().getProps(nextPos);
+    Properties& thisTile = game_.currentMap().getProps(entity.getPos());
+    Properties& nextTile = game_.currentMap().getProps(entity.getPos().x + dx, entity.getPos().y + dy);
 
-    if (nextTile.get(TileFlag::canWalk))
+    if (nextTile.get(TileFlag::canWalk) && !nextTile.get(TileFlag::hasEntity)) {
         entity.move(dx, dy);
+        thisTile.setOff(TileFlag::hasEntity);
+        nextTile.setOn( TileFlag::hasEntity);
+    }
 }

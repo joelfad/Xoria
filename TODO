@@ -4,7 +4,6 @@ It will be updated regularly as new features are planned and implemented.
 
 Upcoming Features
 =================
-+ Add tile properties
 + Add new types of tiles
 + Save/Load maps as text files
 + Design UI layout and scrolling
@@ -15,6 +14,7 @@ Upcoming Features
 
 Implemented
 ===========
+2015-07-29 - Add tile properties
 2015-07-24 - Add ability for monsters to move randomly
 2015-07-21 - Add Player and Monster classes
 2015-07-14 - Add TUI and PlayScreen classes
