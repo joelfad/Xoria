@@ -3,7 +3,7 @@ Project: Xoria
 File: playscreen.cpp
 Author: Joel McFadden
 Created: July 13, 2015
-Last Modified: July 26, 2015
+Last Modified: July 29, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -36,10 +36,10 @@ PlayScreen::PlayScreen(Game& game, int width, int height)
 
 void PlayScreen::processNextEvent()
 {
-    if (!PlayerTurn())
+    if (!playerTurn())
         return; // player has not made a turn, skip monsters
 
-    MonsterTurns();
+    monsterTurns();
 }
 
 void PlayScreen::render()
@@ -54,7 +54,7 @@ void PlayScreen::render()
     TCODConsole::blit(&console_, 0, 0, 0, 0, TCODConsole::root, 0, 0);
 }
 
-bool PlayScreen::PlayerTurn()
+bool PlayScreen::playerTurn()
 {
     Entity& player = game_.currentMap().getPlayer();
 
@@ -70,20 +70,20 @@ bool PlayScreen::PlayerTurn()
     }
     else {
         switch (lastKeyPressed_.vk) {
-        case TCODK_UP:              // move up
-            player.move( 0, -1);
+        case TCODK_UP:
+            tryMove(player,  0, -1); // move up
             break;
-        case TCODK_DOWN:            // move down
-            player.move( 0,  1);
+        case TCODK_DOWN:
+            tryMove(player,  0,  1); // move down
             break;
-        case TCODK_LEFT:            // move left
-            player.move(-1,  0);
+        case TCODK_LEFT:
+            tryMove(player, -1,  0); // move left
             break;
-        case TCODK_RIGHT:           // move right
-            player.move( 1,  0);
+        case TCODK_RIGHT:
+            tryMove(player,  1,  0); // move right
             break;
-        case TCODK_SPACE:           // skip turn
-            break;
+        case TCODK_SPACE:
+            break;                   // skip turn
         default:
             return false;
         }
@@ -93,7 +93,7 @@ bool PlayScreen::PlayerTurn()
     return true;
 }
 
-void PlayScreen::MonsterTurns()
+void PlayScreen::monsterTurns()
 {
     // iterate through monsters
     for (auto it = game_.currentMap().beginMonsters(); it != game_.currentMap().endMonsters(); ++it) {
@@ -101,19 +101,31 @@ void PlayScreen::MonsterTurns()
         // move randomly
         switch (Utility::randInt(0, 4)) {
         case 1:
-            (*it)->move( 0, -1); // move up
+            tryMove(**it,  0, -1); // move up
             break;
         case 2:
-            (*it)->move( 0,  1); // move down
+            tryMove(**it,  0,  1); // move down
             break;
         case 3:
-            (*it)->move(-1,  0); // move left
+            tryMove(**it, -1,  0); // move left
             break;
         case 4:
-            (*it)->move( 1,  0); // move right
+            tryMove(**it,  1,  0); // move right
             break;
         default:
-            break;               // skip turn
+            break;                 // skip turn
         }
+    }
+}
+
+void PlayScreen::tryMove(Entity& entity, int dx, int dy)
+{
+    Properties& thisTile = game_.currentMap().getProps(entity.getPos());
+    Properties& nextTile = game_.currentMap().getProps(entity.getPos().x + dx, entity.getPos().y + dy);
+
+    if (nextTile.get(TileFlag::canWalk) && !nextTile.get(TileFlag::hasEntity)) {
+        entity.move(dx, dy);
+        thisTile.setOff(TileFlag::hasEntity);
+        nextTile.setOn( TileFlag::hasEntity);
     }
 }

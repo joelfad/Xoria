@@ -24,7 +24,8 @@ SOURCES += \
     src/player.cpp \
     src/coord.cpp \
     src/monster.cpp \
-    src/utility.cpp
+    src/utility.cpp \
+    src/properties.cpp
 
 HEADERS += \
     include/tile.h \
@@ -39,4 +40,5 @@ HEADERS += \
     include/player.h \
     include/coord.h \
     include/monster.h \
-    include/utility.h
+    include/utility.h \
+    include/properties.h

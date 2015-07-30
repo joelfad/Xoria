@@ -3,7 +3,7 @@ Project: Xoria
 File: world.cpp
 Author: Joel McFadden
 Created: July 12, 2015
-Last Modified: July 23, 2015
+Last Modified: July 28, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -47,7 +47,9 @@ Map& World::currentMap() const
     return *maps_.at(currentMapNo_);
 }
 
+/*
 void World::makeCave(Map &map)
 {
     // TODO: turn an default map into a cave map
 }
+*/

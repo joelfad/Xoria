@@ -3,7 +3,7 @@ Project: Xoria
 File: tile.cpp
 Author: Joel McFadden
 Created: June 19, 2015
-Last Modified: July 14, 2015
+Last Modified: July 28, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -32,4 +32,9 @@ Usage Agreement:
 void Tile::render(TCODConsole* activeConsole, int x, int y) const
 {
     activeConsole->putCharEx(x, y, glyph_, fore_, back_);
+}
+
+uint_fast32_t Tile::getDefaultProps() const
+{
+    return defaultFlags_;
 }

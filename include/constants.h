@@ -3,7 +3,7 @@ Project: Xoria
 File: constants.h
 Author: Joel McFadden
 Created: June 19, 2015
-Last Modified: July 21, 2015
+Last Modified: July 28, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -48,9 +48,29 @@ namespace Default {
     const int playerAccuracy = 1;
 }
 
+enum class TileFlag : uint_fast32_t {
+    canWalk     = 0x0001,       // 0
+    canSwim     = 0x0002,       // 1
+    canFly      = 0x0004,       // 2
+    canBreathe  = 0x0008,       // 3
+    canDig      = 0x0010,       // 4
+    canOpen     = 0x0020,       // 5
+    canPush     = 0x0040,       // 6
+
+    visible     = 0x0080,       // 7
+    discovered  = 0x0100,       // 8
+
+    hasEntity   = 0x0200,       // 9
+    hasItem     = 0x0400,       // 10
+    hasPortal   = 0x0800,       // 11
+    hasEvent    = 0x1000        // 12
+
+ // MAX_FLAG    = 0x8000'0000   // 31
+};
+
 namespace TileSet {
-    const Tile grass{"Grass", "green vegetation", '.', TCODColor::darkestChartreuse, TCODColor::black};
-    const Tile wall{"Wall", "rock wall", '#', TCODColor::lightPink, TCODColor::black};
+    const Tile grass{"Grass", "green vegetation", '.', TCODColor::darkestChartreuse, TCODColor::black, 0x0005};
+    const Tile wall{"Wall", "rock wall", '#', TCODColor::lightPink, TCODColor::black, 0x0000};
 }
 
 namespace MonsterSet {
@@ -58,4 +78,3 @@ namespace MonsterSet {
 }
 
 #endif // CONSTANTS
-
