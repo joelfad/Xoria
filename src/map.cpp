@@ -3,7 +3,7 @@ Project: Xoria
 File: map.cpp
 Author: Joel McFadden
 Created: June 19, 2015
-Last Modified: July 29, 2015
+Last Modified: July 31, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -35,9 +35,49 @@ Map::Map(int width, int height)
     // create a default map filled with grass and one wall
     for (int x = 0; x < width_; x++)
         for (int y = 0; y < height_; y++)
-            setTile(x, y, TileSet::grass);
+            setTile(x, y, TileSet::dirtGround);
 
-    setTile(34, 0, TileSet::wall);
+    // TEMP: test tiles
+
+    setTile(34, 0, TileSet::rockWall);
+    setTile(34, 2, TileSet::metalWall);
+    setTile(34, 4, TileSet::shrub);
+    setTile(34, 6, TileSet::minerals);
+    setTile(34, 8, TileSet::iceWall);
+
+    setTile(36, 0, TileSet::dirtWall);  
+    setTile(36, 2, TileSet::doorClosed);
+    setTile(36, 4, TileSet::lava);
+    setTile(36, 6, TileSet::waterDeep);
+    setTile(36, 8, TileSet::waterShallow);
+
+    setTile(38, 0, TileSet::doorOpen);
+    setTile(38, 2, TileSet::tree);
+    setTile(38, 4, TileSet::rockGround);
+    setTile(38, 6, TileSet::grass);
+    setTile(38, 8, TileSet::iceGround);
+
+    setTile(40, 0, TileSet::mud);
+    setTile(40, 2, TileSet::rubble);
+    setTile(40, 4, TileSet::chasm);
+    setTile(40, 6, TileSet::airlock);
+    setTile(40, 8, TileSet::portal);
+
+    setTile(42, 0, TileSet::descend);
+    setTile(42, 2, TileSet::ascend);
+    setTile(42, 4, TileSet::elevator);
+    setTile(42, 6, TileSet::fieldUpOn);
+    setTile(42, 8, TileSet::fieldRightOn);
+
+    setTile(44, 0, TileSet::fieldDownOn);
+    setTile(44, 2, TileSet::fieldLeftOn);
+    setTile(44, 4, TileSet::fieldUpOff);
+    setTile(44, 6, TileSet::fieldDownOff);
+    setTile(44, 8, TileSet::fieldLeftOff);
+
+    setTile(46, 0, TileSet::fieldRightOff);
+    setTile(46, 2, TileSet::switchOff);
+    setTile(46, 4, TileSet::switchOn);
 
     // TODO: set method to add entity to map and set tile flag hasEntity
 
