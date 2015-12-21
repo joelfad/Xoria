@@ -33,7 +33,7 @@ Usage Agreement:
 Game::Game() : world_{1}
 {
     // specify the font file, set to antialiased greyscale
-    TCODConsole::setCustomFont("fonts/terminal16x16_gs_ro.png", TCOD_FONT_LAYOUT_ASCII_INROW | TCOD_FONT_TYPE_GREYSCALE);
+    TCODConsole::setCustomFont("res/fonts/terminal16x16_gs_ro.png", TCOD_FONT_LAYOUT_ASCII_INROW | TCOD_FONT_TYPE_GREYSCALE);
 
     // initialize root console window
     TCODConsole::initRoot(Settings::consoleWidth, Settings::consoleHeight, "Xoria");

@@ -1,7 +1,7 @@
 # Xoria
 Xoria is a simple sci-fi roguelike written in C++ using [The Doryen Library](http://roguecentral.org/doryen/libtcod/).
 
-<img src="/img/screenshot.png" width="640" alt="Screenshot">
+<img src="/res/img/screenshot.png" width="640" alt="Screenshot">
 
 ## Dependencies
 The Doryen Library (libtcod) must be installed in order to compile and run Xoria.
