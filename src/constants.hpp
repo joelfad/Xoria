@@ -1,6 +1,6 @@
 /*
 Project: Xoria
-File: constants.h
+File: constants.hpp
 Author: Joel McFadden
 Created: June 19, 2015
 Last Modified: July 31, 2015
@@ -30,8 +30,8 @@ Usage Agreement:
 #ifndef CONSTANTS
 #define CONSTANTS
 
-#include "tile.h"
-#include "monster.h"
+#include "tile.hpp"
+#include "monster.hpp"
 
 namespace Settings {
     const int consoleWidth = 80;

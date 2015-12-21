@@ -1,6 +1,6 @@
 /*
 Project: Xoria
-File: Tui.h
+File: tui.hpp
 Author: Joel McFadden
 Created: July 13, 2015
 Last Modified: July 26, 2015
@@ -30,7 +30,7 @@ Usage Agreement:
 #ifndef TUI_H
 #define TUI_H
 
-#include "constants.h"
+#include "constants.hpp"
 
 class Game;
 

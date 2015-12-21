@@ -2,17 +2,25 @@ This file serves as a short-term roadmap for the project.
 It will be updated regularly as new features are planned and implemented.
 
 
-Upcoming Features
+Upcoming Features (ON HOLD until project is refactored)
 =================
-+ Save/Load maps as text files
+! Refactor
 + Design UI layout and scrolling
 + Display player stats
++ Add message area
++ Refactor map properties
++ Save/Load maps as text files
 + Generate random cave
++ Add FoV
++ Add map editor
++ Add new types of monsters
 + Add basic meelee combat
++ Add inventory system
 
 
 Implemented
 ===========
+2015-12-21 - Switch build system to CMake
 2015-07-31 - Add new types of tiles
 2015-07-29 - Add tile properties
 2015-07-24 - Add ability for monsters to move randomly

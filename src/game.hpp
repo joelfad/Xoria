@@ -1,6 +1,6 @@
 /*
 Project: Xoria
-File: game.h
+File: game.hpp
 Author: Joel McFadden
 Created: June 19, 2015
 Last Modified: July 26, 2015
@@ -32,9 +32,9 @@ Usage Agreement:
 
 #include <vector>
 #include <memory>
-#include <libtcod.hpp>
-#include "tui.h"
-#include "world.h"
+#include <libtcod/libtcod.hpp>
+#include "tui.hpp"
+#include "world.hpp"
 
 /// Manages the game state and TUI stack.
 /// Initializes, runs, and terminates the game.

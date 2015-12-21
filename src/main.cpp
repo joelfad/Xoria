@@ -27,7 +27,7 @@ Usage Agreement:
     along with Xoria.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "game.h"
+#include "game.hpp"
 
 int main()
 {

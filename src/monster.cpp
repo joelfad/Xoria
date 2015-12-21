@@ -3,7 +3,7 @@ Project: Xoria
 File: monster.cpp
 Author: Joel McFadden
 Created: July 21, 2015
-Last Modified: July 21, 2015
+Last Modified: December 21, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -27,7 +27,7 @@ Usage Agreement:
     along with Xoria.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "monster.h"
+#include "monster.hpp"
 
 Monster::Monster(const Coord &pos, const Monster& m)
     : Entity{pos,

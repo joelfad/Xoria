@@ -1,6 +1,6 @@
 /*
 Project: Xoria
-File: monster.h
+File: monster.hpp
 Author: Joel McFadden
 Created: July 21, 2015
 Last Modified: July 25, 2015
@@ -30,7 +30,7 @@ Usage Agreement:
 #ifndef MONSTER_H
 #define MONSTER_H
 
-#include "entity.h"
+#include "entity.hpp"
 
 /// Creature inhabiting game world
 /// Entity not controlled by user.

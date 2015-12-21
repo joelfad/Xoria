@@ -1,6 +1,6 @@
 /*
 Project: Xoria
-File: world.h
+File: world.hpp
 Author: Joel McFadden
 Created: July 12, 2015
 Last Modified: July 20, 2015
@@ -32,7 +32,7 @@ Usage Agreement:
 
 #include <vector>
 #include <memory>
-#include "map.h"
+#include "map.hpp"
 
 /// Collection of Maps.
 /// Generates and stores game maps.

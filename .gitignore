@@ -1,4 +1,3 @@
-/debug
-/release
+/bin
+/.idea
 /untracked
-*.pro.user

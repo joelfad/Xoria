@@ -3,7 +3,7 @@ Project: Xoria
 File: utility.cpp
 Author: Joel McFadden
 Created: July 22, 2015
-Last Modified: July 23, 2015
+Last Modified: December 21, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -27,7 +27,7 @@ Usage Agreement:
     along with Xoria.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "utility.h"
+#include "utility.hpp"
 
 uint16_t Utility::seed;
 std::mt19937 Utility::RNG;

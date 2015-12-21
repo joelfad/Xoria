@@ -3,7 +3,7 @@ Project: Xoria
 File: world.cpp
 Author: Joel McFadden
 Created: July 12, 2015
-Last Modified: July 28, 2015
+Last Modified: December 21, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -27,7 +27,7 @@ Usage Agreement:
     along with Xoria.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "world.h"
+#include "world.hpp"
 
 World::World(const int numMaps)
 {

@@ -3,7 +3,7 @@ Project: Xoria
 File: game.cpp
 Author: Joel McFadden
 Created: June 19, 2015
-Last Modified: July 26, 2015
+Last Modified: December 21, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -27,8 +27,8 @@ Usage Agreement:
     along with Xoria.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "game.h"
-#include "playscreen.h"
+#include "game.hpp"
+#include "playscreen.hpp"
 
 Game::Game() : world_{1}
 {

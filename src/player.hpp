@@ -1,6 +1,6 @@
 /*
 Project: Xoria
-File: player.h
+File: player.hpp
 Author: Joel McFadden
 Created: July 18, 2015
 Last Modified: July 25, 2015
@@ -30,8 +30,8 @@ Usage Agreement:
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include "entity.h"
-#include "constants.h"
+#include "entity.hpp"
+#include "constants.hpp"
 
 /// Player Character
 /// Entity controlled by user.

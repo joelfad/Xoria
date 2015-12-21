@@ -3,7 +3,7 @@ Project: Xoria
 File: map.cpp
 Author: Joel McFadden
 Created: June 19, 2015
-Last Modified: July 31, 2015
+Last Modified: December 21, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -27,7 +27,7 @@ Usage Agreement:
     along with Xoria.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "map.h"
+#include "map.hpp"
 
 Map::Map(int width, int height)
     : width_{width}, height_{height}, tiles_(width * height, nullptr), tileProps_(width * height, 0)

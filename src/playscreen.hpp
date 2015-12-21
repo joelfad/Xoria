@@ -1,6 +1,6 @@
 /*
 Project: Xoria
-File: playscreen.h
+File: playscreen.hpp
 Author: Joel McFadden
 Created: July 13, 2015
 Last Modified: July 29, 2015
@@ -30,7 +30,7 @@ Usage Agreement:
 #ifndef PLAYSCREEN_H
 #define PLAYSCREEN_H
 
-#include "game.h"
+#include "game.hpp"
 
 /// Gameplay Screen.
 /// The primary interface where users will spend most of their time.

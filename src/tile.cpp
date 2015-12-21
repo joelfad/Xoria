@@ -3,7 +3,7 @@ Project: Xoria
 File: tile.cpp
 Author: Joel McFadden
 Created: June 19, 2015
-Last Modified: July 28, 2015
+Last Modified: December 21, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -27,7 +27,7 @@ Usage Agreement:
     along with Xoria.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "tile.h"
+#include "tile.hpp"
 
 void Tile::render(TCODConsole* activeConsole, int x, int y) const
 {

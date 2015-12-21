@@ -1,6 +1,6 @@
 /*
 Project: Xoria
-File: tile.h
+File: tile.hpp
 Author: Joel McFadden
 Created: June 19, 2015
 Last Modified: July 28, 2015
@@ -30,7 +30,7 @@ Usage Agreement:
 #ifndef TILE_H
 #define TILE_H
 
-#include "mapobject.h"
+#include "mapobject.hpp"
 
 /// Discrete element of game environment
 class Tile : public MapObject {

@@ -1,9 +1,9 @@
 /*
 Project: Xoria
-File: mapobject.h
+File: coord.hpp
 Author: Joel McFadden
-Created: June 19, 2015
-Last Modified: July 19, 2015
+Created: July 19, 2015
+Last Modified: July 20, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -27,27 +27,33 @@ Usage Agreement:
     along with Xoria.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef MAPOBJECT_H
-#define MAPOBJECT_H
+#ifndef COORD_H
+#define COORD_H
 
-#include <string>
-#include <libtcod.hpp>
+#include <cmath>
 
-/// Building blocks of a map
-/// Abstract base class for tiles, entities, items, etc.
-class MapObject {
-protected:
-    MapObject(const std::string& name,
-              const std::string& description,
-              int glyph,
-              const TCODColor& fore)
-        : name_{name}, description_{description}, glyph_{glyph}, fore_{fore}
+/// Set of (x, y) map coordinates.
+struct Coord {
+    int x;
+    int y;
+
+    Coord(int x = 0, int y = 0) : x{x}, y{y}
     { }
 
-    std::string name_;
-    std::string description_;
-    int glyph_;
-    TCODColor fore_;
+    void set(int newX, int newY);
+    /* changes coordinates to (newX, newY) */
+
+    void offset(int dx, int dy);
+    /* changes coordinates to (x+dx, y+dy) */
+
+    static double distance(const Coord& c1, const Coord& c2);
+    /* computes the distance between two map coordinates */
+
+    bool operator==(const Coord& rhs) const;
+    /* compares two sets of map coordinates for equality */
+
+    bool operator!=(const Coord& rhs) const;
+    /* compares two sets of map coordinates for inequality */
 };
 
-#endif // MAPOBJECT_H
+#endif // COORD_H

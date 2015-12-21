@@ -1,6 +1,6 @@
 /*
 Project: Xoria
-File: entity.h
+File: entity.hpp
 Author: Joel McFadden
 Created: July 17, 2015
 Last Modified: July 21, 2015
@@ -30,8 +30,8 @@ Usage Agreement:
 #ifndef ENTITY_H
 #define ENTITY_H
 
-#include "mapobject.h"
-#include "coord.h"
+#include "mapobject.hpp"
+#include "coord.hpp"
 
 /// Beings that interact with the game environment.
 /// Abstract base class for creatures, npcs, and player.

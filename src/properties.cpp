@@ -3,7 +3,7 @@ Project: Xoria
 File: Properties
 Author: Joel McFadden
 Created: July 27, 2015
-Last Modified: July 29, 2015
+Last Modified: December 21, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -27,7 +27,7 @@ Usage Agreement:
     along with Xoria.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "properties.h"
+#include "properties.hpp"
 
 bool Properties::get(TileFlag flag) const
 {

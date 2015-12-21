@@ -3,7 +3,7 @@ Project: Xoria
 File: Tui.cpp
 Author: Joel McFadden
 Created: July 13, 2015
-Last Modified: July 20, 2015
+Last Modified: December 21, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -27,7 +27,7 @@ Usage Agreement:
     along with Xoria.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "tui.h"
+#include "tui.hpp"
 
 void Tui::waitForKeyPress()
 {

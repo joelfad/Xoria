@@ -9,7 +9,7 @@ The Doryen Library (libtcod) must be installed in order to compile and run Xoria
 * Arch linux users can find libtcod in the [AUR](https://aur.archlinux.org/packages/libtcod/)
 
 ## Building & Running
-The quickest way to build Xoria is to open **xoria.pro** in a recent version of Qt Creator (currently v3.4.1). After building, Xoria should be run from the project directory (which contains this README file) to ensure that it is able to find the necessary fonts and resources.
+To build Xoria, use CMake. After building, Xoria should be run from the project directory (which contains this README file) to ensure that it is able to find the necessary fonts and resources.
 
 ## Notes
 Xoria is in the earliest stages of development and is **not** a functional game yet. Progress and upcoming features are summarized [here](TODO).

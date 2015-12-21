@@ -3,7 +3,7 @@ Project: Xoria
 File: mapobject.cpp
 Author: Joel McFadden
 Created: June 19, 2015
-Last Modified: July 16, 2015
+Last Modified: December 21, 2015
 
 Description:
     A simple sci-fi roguelike.
@@ -27,4 +27,4 @@ Usage Agreement:
     along with Xoria.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "mapobject.h"
+#include "mapobject.hpp"

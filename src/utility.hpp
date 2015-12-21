@@ -1,6 +1,6 @@
 /*
 Project: Xoria
-File: utility.h
+File: utility.hpp
 Author: Joel McFadden
 Created: July 22, 2015
 Last Modified: July 23, 2015

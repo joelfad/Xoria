@@ -1,6 +1,6 @@
 /*
 Project: Xoria
-File: properties.h
+File: properties.hpp
 Author: Joel McFadden
 Created: July 27, 2015
 Last Modified: July 29, 2015
@@ -30,7 +30,7 @@ Usage Agreement:
 #ifndef PROPERTIES_H
 #define PROPERTIES_H
 
-#include "constants.h"
+#include "constants.hpp"
 
 /// Tile Properties
 /// Set of flags describing the state of a map tile.

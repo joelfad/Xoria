@@ -1,6 +1,6 @@
 /*
 Project: Xoria
-File: map.h
+File: map.hpp
 Author: Joel McFadden
 Created: June 19, 2015
 Last Modified: July 28, 2015
@@ -33,10 +33,10 @@ Usage Agreement:
 #include <vector>
 #include <list>
 #include <memory>
-#include "properties.h"
-#include "utility.h"
-#include "player.h"
-#include "monster.h"
+#include "properties.hpp"
+#include "utility.hpp"
+#include "player.hpp"
+#include "monster.hpp"
 
 /// Setting of the game.
 /// Environment where creatures, tiles, and items interact.
